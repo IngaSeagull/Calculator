@@ -3,15 +3,11 @@ import SwiftUI
 fileprivate extension CalculatorButtonType {
     var buttonColor: Color {
         switch self {
-        case .equal:
-            return .button4
         case .clear:
             return .button2
-        case .delete, .negative:
+        case .delete, .negative, .equal:
             return .button4
-        case .bitcoin:
-            return .button1
-        case .addition, .subtraction, .multiplication, .division, .sin, .cos:
+        case .bitcoin, .addition, .subtraction, .multiplication, .division, .sin, .cos:
             return .button1
         default:
             return .button3
