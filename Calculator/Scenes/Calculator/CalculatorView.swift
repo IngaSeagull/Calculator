@@ -1,20 +1,20 @@
 import SwiftUI
 
-fileprivate extension CalcButtonM {
+fileprivate extension CalculatorButtonType {
     var buttonColor: Color {
         switch self {
         case .equal:
-            return Color("Blue 1")
+            return .button4
         case .clear:
-            return Color("pink4")
+            return .button2
         case .delete, .negative:
-            return Color("Blue")
+            return .button4
         case .bitcoin:
-            return Color("Blue 2")
+            return .button1
         case .addition, .subtraction, .multiplication, .division, .sin, .cos:
-            return Color("Pink 3")
+            return .button1
         default:
-            return Color("Pink")
+            return .button3
         }
     }
 }
@@ -23,88 +23,128 @@ struct CalculatorView: View {
     @StateObject private var viewModel: CalculatorViewModel
     @State private var presentingBottomSheet = false
     
+    private enum Constants {
+        static let padding: CGFloat = 15
+        static let buttonSpacing: CGFloat = 12
+        static let maxCalculatorWidth: CGFloat = 460
+    }
+    
     init(viewModel: CalculatorViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
         ZStack {
-            Color("Pink 2")
+            Color.background
             VStack {
+                
                 HStack {
                     Spacer()
                     Button {
                         presentingBottomSheet = true
-                        // TODO: performe Settings action
-                        // Maybe bottom popup?
                     } label: {
-                        Image("settings3-B")
-                            .resizable()
-                            .scaledToFit()
+                        ZStack {
+                            Circle()
+                                .tint(Color.background)
+                                .squareFrame(size: buttonWidth())
+                                .shadow()
+                            Image("settings")
+                                .scaledToFitSquareFrame(size: 30)
+                                .tint(.button2)
+                        }
                     }
-                    //                    .background(Color("Pink 2"))
-                    .frame(width: 30, height: 30)
                 }
+                .padding(.bottom, 30)
+                
                 HStack {
                     Spacer()
                     Text(viewModel.visualValue)
-                        .font(.system(size: 60))
+                        .font(.system(size: isDeviceIPad() ? 80 : 53))
                         .foregroundColor(.white)
+                        .shadow()
                 }
-                HStack {
-                    HStack {
-                        ForEach(viewModel.displayButtons, id: \.self) { row in
-                            VStack {
-                                ForEach(row, id: \.self) { item in
-                                    bubbleButton(item)
+                
+                HStack(spacing: Constants.buttonSpacing) {
+                    ForEach(viewModel.displayButtons, id: \.self) { row in
+                        VStack(spacing: Constants.buttonSpacing) {
+                            ForEach(row, id: \.id) { item in
+                                if item.isVisible {
+                                    roundButton(item)
                                 }
                             }
                         }
                     }
                 }
             }
-            .padding()
+            .frame(width: calculatorWidth())
+            .padding(Constants.padding)
+            
+            BottomSheetView(isShowing: $viewModel.presentingErrorPopup) {
+                ZStack {
+                    Color.background // TODO: fix colors
+                    VStack {
+                        Text(viewModel.errorMessage)
+                            .font(.system(size: isDeviceIPad() ? 24 : 18))
+                        Image("error")
+                            .scaledToFitSquareFrame(size: 80)
+                    }
+                    .padding()
+                }
+            }
         }
         .ignoresSafeArea()
         .sheet(isPresented: $presentingBottomSheet) {
-            VStack {
-                ForEach($viewModel.settings.settingsTogglers, id: \.self) { $toggle in
-                    
-                    Toggle(isOn: $toggle.isOn) {
-                        Text(toggle.name)
-                    }
-                }
-            }
-            .padding()
+            SettingsView(isDarkModeOn: $viewModel.isDarkModeOn, settingsButtons: $viewModel.settingsButtons)
         }
         .onChange(of: presentingBottomSheet) { newValue in
-            if newValue == false {
+            if !newValue {
                 viewModel.updateSettings()
             }
         }
-        .popover(isPresented: $viewModel.presentingErrorPopup) {
-            ZStack {
-                Color.blue.frame(width: 200, height: 100)
-                Text("Popup!")
-            }
+        .preferredColorScheme(viewModel.isDarkModeOn ? .dark : .light)
+    }
+    
+    func calculatorWidth() -> CGFloat {
+        var width = UIScreen.main.bounds.width - Constants.padding * 2
+        if width > Constants.maxCalculatorWidth {
+            width = Constants.maxCalculatorWidth
         }
+        return width
     }
     
-    func bubbleButton(_ button: CalcButtonM) -> some View {
+    func buttonWidth() -> CGFloat {
+        (calculatorWidth() - (5 * Constants.buttonSpacing)) / 5
+    }
+    
+    func roundButton(_ button: CalculatorButton) -> some View {
         Button(action: {
-            viewModel.didTap(button)
+            viewModel.didTap(button.type)
         }, label: {
-            Text(button.rawValue)
-                .frame(width: 60, height: 60)
-                .background(button.buttonColor)
-                .cornerRadius(35)
+            Text(button.name)
+                .font(.system(size: isDeviceIPad() ? 24 : 18))
+                .bold() // TODO: font for iPad
+                .frame(width: buttonWidth(), height: buttonWidth())
+                .background(button.type.buttonColor)
+                .cornerRadius(buttonWidth() / 2)
+                .foregroundColor(Color.buttonTint)
+                
         })
+        .shadow()
     }
     
+    func isDeviceIPad() -> Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         AppBuilder().buildCalculatorView()
+    }
+}
+
+fileprivate extension View {
+    func shadow() -> some View {
+        shadow(color: .gray, radius: 2, x: 0, y: 2)
     }
 }

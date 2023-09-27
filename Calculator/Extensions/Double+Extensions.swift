@@ -1,8 +1,7 @@
-//
-//  Double+Extensions.swift
-//  Calculator
-//
-//  Created by Inga Soprun on 19/09/2023.
-//
-
 import Foundation
+
+extension Double {
+    var stringWithoutZeroFraction: String {
+        truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
+}

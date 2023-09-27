@@ -1,11 +1,14 @@
 import Foundation
 
-struct CryptocurrencyResponse: Codable {
-    let usd: Double // TODO: rename and do Key
-    let btc: Double
+struct CryptocurrencyResponse: Decodable {
+    let usd: Double
 
     enum CodingKeys: String, CodingKey {
         case usd = "USD"
-        case btc = "BTC"
     }
+}
+
+enum Cryptocurrency: String {
+    case usd = "USD"
+    case btc = "BTC"
 }

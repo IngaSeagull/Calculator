@@ -64,7 +64,7 @@ extension CalculatorButtonType {
 }
 
 struct CalculatorButton: Identifiable, Hashable {
-    let id = UUID() //?
+    let id = UUID()
     let type: CalculatorButtonType
     var isVisible: Bool
     var name: String {

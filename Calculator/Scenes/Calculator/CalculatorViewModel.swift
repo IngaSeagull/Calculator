@@ -1,105 +1,72 @@
 import Foundation
 import Combine
 
-fileprivate extension CalcButtonM {
-    var operation: Operation? {
-        switch self {
-        case .addition:
-            return .add
-        case .subtraction:
-            return .subtract
-        case .multiplication:
-            return .multiply
-        case .division:
-            return .divide
-        default:
-            return nil//.none // TODO: może zrobić to inaczej? nie do końca ok że każdemu jest przypisywana operacja
-        }
-    }
-    
-    var isToggler: Bool { // TODO: rename
-        switch self {
-        case .addition, .subtraction, .multiplication, .division, .sin, .cos, .bitcoin:
-            return true
-        case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .decimal, .equal, .clear, .negative, .delete:
-            return false
-        }
-    }
-}
-
-enum Operation { // Czy powinno być w tym pliku?
-    case add
-    case subtract
-    case multiply
-    case divide
-//    case none
-}
-
 final class CalculatorViewModel: ObservableObject {
     @Published var presentingErrorPopup = false
-    @Published var visualValue = "0" //Rename
+    @Published var visualValue = "0"
     @Published var inputInProgress = false
-    @Published var displayButtons = [[CalcButtonM]]()
+    @Published var displayButtons = [[CalculatorButton]]()
+    @Published var settingsButtons = [SettingsButton]()
+    @Published var isDarkModeOn = false
+    var errorMessage = ""
     
-    private var operationNumber: Double = 0
-    private var currentOperation: Operation?
     private let apiClient: APIClient
     private let internetMonitor: InternetMonitorManaging
-    private var cancellables = Set<AnyCancellable>()
-    private var isInternetConnected = false
     private let operationMngr: CalculatorOperations
+    private let settingsMngr: SettingsManager
     
-    let allButtonsCopy: [[CalcButtonM]] // do multilevel array?
-    var settings: SettingsViewModel
+    private var operationNumber: Double = 0
+    private var currentOperation: OperationType?
+    private var isInternetConnected = false
+    private var cancellables = Set<AnyCancellable>()
+    private enum Constants {
+        static let textLimit = 10
+        static let noInternetMessage = "No Internet Connection!\nAn Internet connection is required for this operation."
+        static let textLimitErrorMessage = "The value exceeds the \(Constants.textLimit) character limit"
+    }
     
     init(
-        buttons: [[CalcButtonM]],
+        buttonTypes: [[CalculatorButtonType]],
         apiClient: APIClient,
         internetMonitor: InternetMonitorManaging,
-        operationMngr: CalculatorOperations
+        operationMngr: CalculatorOperations,
+        settingsMngr: SettingsManager
     ) {
         self.apiClient = apiClient
         self.internetMonitor = internetMonitor
         self.operationMngr = operationMngr
-        self.allButtonsCopy = buttons
+        self.settingsMngr = settingsMngr
         
-        let dynamicButtons = buttons.map({ cbm in
-            cbm.filter { $0.isToggler }
-        })
+        self.displayButtons = getButtons(with: buttonTypes)
         
-        let togglers = dynamicButtons.flatMap { $0 }//Array(togglerButtons.joined())
-        settings = SettingsViewModel(buttons: togglers)
-        filterXXX()
+        updateAppColorTheme()
+        fillSettingsButtons()
         createBindings()
-    }
-    
-    func filterXXX() {
-        var filteredDisplayButtons = allButtonsCopy
-        for (index, row) in allButtonsCopy.enumerated() {
-            
-            for button in row {
-                
-                if settings.settingsTogglers.contains(where: { toggleButton in
-                    toggleButton.name == button.rawValue && !toggleButton.isOn
-                }) {
-                    if let buttonIndex = filteredDisplayButtons[index].firstIndex(of: button) {
-                        filteredDisplayButtons[index].remove(at: buttonIndex)
-                    }
-                }
-            }
-        }
-        displayButtons = filteredDisplayButtons
-    }
-    
-    func updateSettings() {
-        settings.updateTogglerSettings()
-        filterXXX()
     }
 }
 
 extension CalculatorViewModel {
     
-    func didTap(_ button: CalcButtonM) {
+    func updateSettings() {
+        settingsMngr.disabledButtons = settingsButtons
+            .filter { !$0.isOn }
+            .map { $0.id }
+        
+        settingsMngr.isLightStyle = !isDarkModeOn
+        updateDisplayButtons()
+    }
+    
+    func updateDisplayButtons() {
+        for (index, row) in displayButtons.enumerated(){
+            for (index2, button) in row.enumerated() {
+                if button.type.isVisibleInSettings {
+                    displayButtons[index][index2].isVisible = !settingsMngr.disabledButtons.contains(button.name)
+                }
+            }
+        }
+    }
+    
+    func didTap(_ button: CalculatorButtonType) {
         switch button {
         case .clear:
             resetOperationAndUpdateValue(0)
@@ -123,9 +90,18 @@ extension CalculatorViewModel {
             if visualValue.contains(button.rawValue) {
                 break
             }
+            if inputInProgress && visualValue.count == Constants.textLimit {
+                presentError(message: Constants.textLimitErrorMessage)
+                return
+            }
             visualValue = visualValue + button.rawValue
+            inputInProgress = true
             
         case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
+            if inputInProgress && visualValue.count == Constants.textLimit {
+                presentError(message: Constants.textLimitErrorMessage)
+                return
+            }
             numberButtonTapped(button.rawValue)
             
         case .addition, .subtraction, .multiplication, .division:
@@ -139,6 +115,36 @@ extension CalculatorViewModel {
 }
 
 private extension CalculatorViewModel {
+    private func getButtons(with buttonTypes: [[CalculatorButtonType]]) -> [[CalculatorButton]] {
+        var buttons = [[CalculatorButton]]()
+        for row in buttonTypes {
+            var buttonsRow = [CalculatorButton]()
+            for buttonType in row {
+                var isButtonVisible = true
+                if buttonType.isVisibleInSettings {
+                    isButtonVisible = !settingsMngr.disabledButtons.contains(buttonType.rawValue)
+                }
+                buttonsRow.append(CalculatorButton(type: buttonType, isVisible: isButtonVisible))
+            }
+            buttons.append(buttonsRow)
+        }
+        return buttons
+    }
+    
+    private func fillSettingsButtons() {
+        settingsButtons = displayButtons.map { row in
+            row.filter { $0.type.isVisibleInSettings }
+        }
+        .flatMap { $0 }
+        .map {
+            SettingsButton(id: $0.name, isOn: $0.isVisible)
+        }
+    }
+    
+    private func updateAppColorTheme() {
+        isDarkModeOn = !settingsMngr.isLightStyle
+    }
+    
     func createBindings() {
         internetMonitor.isInternetConnected
             .removeDuplicates()
@@ -147,17 +153,30 @@ private extension CalculatorViewModel {
                 self.isInternetConnected = isInternetConnected
             }
             .store(in: &cancellables)
+        
+        $presentingErrorPopup
+            .sink { [weak self] isPopupVisible in
+                guard let self else { return }
+                if !isPopupVisible {
+                    errorMessage = ""
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func deleteButtonTapped() {
         if visualValue.count == 1 {
             visualValue = "0"
             operationNumber = 0
+            inputInProgress = false
         } else {
             visualValue = String(visualValue.dropLast())
-            if visualValue.hasSuffix(CalcButtonM.decimal.rawValue) {
+            if visualValue.hasSuffix(CalculatorButtonType.decimal.rawValue) {
                 visualValue = String(visualValue.dropLast())
                 operationNumber = visualValue.double
+            }
+            if visualValue == "0" {
+                inputInProgress = false
             }
         }
     }
@@ -172,6 +191,9 @@ private extension CalculatorViewModel {
     }
     
     func numberButtonTapped(_ inputNumber: String) {
+        if visualValue == "0" && inputNumber == "0" {
+            return
+        }
         if inputInProgress {
             visualValue = visualValue + inputNumber
         } else {
@@ -181,8 +203,11 @@ private extension CalculatorViewModel {
     }
     
     func bitcoinButtonTapped() {
+        if visualValue.double == 0 {
+            return
+        }
         if !isInternetConnected {
-            presentingErrorPopup = true
+            presentError(message: Constants.noInternetMessage)
             return
         }
         Task {
@@ -200,16 +225,29 @@ private extension CalculatorViewModel {
                 resetOperationAndUpdateValue(result)
             }
         case .failure(let error):
-            print(error.humanReadableDescription) // TODO popup
+            presentError(message: error.humanReadableDescription)
         }
     }
     
     // TODO: rename
     func resetOperationAndUpdateValue(_ value: Double) {
-        visualValue = value.stringWithoutZeroFraction
+        let stringValue = value.stringWithoutZeroFraction
+        if stringValue.count > Constants.textLimit {
+            presentError(message: "Result:\n\(stringValue)\n\(Constants.textLimitErrorMessage)")
+            resetOperationAndUpdateValue(0)
+            return
+        }
+        
+        visualValue = stringValue
         inputInProgress = false
         currentOperation = nil
         operationNumber = value
+    }
+    
+    func presentError(message: String) {
+        errorMessage = message
+        presentingErrorPopup = true
+        print(message)
     }
     
     func performMathOperation() {

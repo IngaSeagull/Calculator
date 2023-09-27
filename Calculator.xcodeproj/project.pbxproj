@@ -7,13 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		721D29902ABCBE1F002F39F9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D298F2ABCBE1F002F39F9 /* Colors.swift */; };
+		721D29922AC1B8BC002F39F9 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29912AC1B8BC002F39F9 /* BottomSheetView.swift */; };
+		721D29942AC1BAE0002F39F9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */; };
+		721D29962AC1CC90002F39F9 /* ColorModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29952AC1CC90002F39F9 /* ColorModeToggleStyle.swift */; };
+		721D29982AC1F29D002F39F9 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29972AC1F29D002F39F9 /* SettingsButton.swift */; };
+		721D299A2AC321A0002F39F9 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29992AC321A0002F39F9 /* View+Extensions.swift */; };
+		721D299C2AC322AB002F39F9 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D299B2AC322AB002F39F9 /* Image+Extensions.swift */; };
+		722F510A2ABB4AAC0068FC47 /* AppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722F51092ABB4AAC0068FC47 /* AppBuilder.swift */; };
+		722F51112ABCA2000068FC47 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722F51102ABCA2000068FC47 /* SettingsManager.swift */; };
+		72B9ACDD2AB8AE950010D803 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B9ACDC2AB8AE950010D803 /* String+Extensions.swift */; };
+		72B9ACE02AB8B1CC0010D803 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72B9ACDF2AB8B1CC0010D803 /* Colors.xcassets */; };
+		72B9ACE32AB8C15D0010D803 /* CalculatorOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B9ACE22AB8C15D0010D803 /* CalculatorOperations.swift */; };
+		72B9ACE52AB9C9A50010D803 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B9ACE42AB9C9A50010D803 /* Double+Extensions.swift */; };
 		72C0AFD32AAA3EA000D50A0A /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFD22AAA3EA000D50A0A /* CalculatorApp.swift */; };
-		72C0AFD52AAA3EA000D50A0A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFD42AAA3EA000D50A0A /* ContentView.swift */; };
+		72C0AFD52AAA3EA000D50A0A /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFD42AAA3EA000D50A0A /* CalculatorView.swift */; };
 		72C0AFD72AAA3EA000D50A0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72C0AFD62AAA3EA000D50A0A /* Assets.xcassets */; };
 		72C0AFDB2AAA3EA000D50A0A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72C0AFDA2AAA3EA000D50A0A /* Preview Assets.xcassets */; };
-		72C0AFE52AAA3EA100D50A0A /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFE42AAA3EA100D50A0A /* CalculatorTests.swift */; };
-		72C0AFEF2AAA3EA100D50A0A /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFEE2AAA3EA100D50A0A /* CalculatorUITests.swift */; };
-		72C0AFF12AAA3EA100D50A0A /* CalculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFF02AAA3EA100D50A0A /* CalculatorUITestsLaunchTests.swift */; };
+		72C0AFE52AAA3EA100D50A0A /* CalculatorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFE42AAA3EA100D50A0A /* CalculatorViewModelTests.swift */; };
+		72C0AFFE2AAF067B00D50A0A /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFFD2AAF067B00D50A0A /* CalculatorViewModel.swift */; };
+		72C0B0002AAF3C1700D50A0A /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFFF2AAF3C1700D50A0A /* CalculatorButton.swift */; };
+		72C0B0022AAF52C300D50A0A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0012AAF52C300D50A0A /* SettingsView.swift */; };
+		72C0B00B2AB05B0D00D50A0A /* CryptoCompareAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B00A2AB05B0D00D50A0A /* CryptoCompareAPIClient.swift */; };
+		72C0B00E2AB7651200D50A0A /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */; };
+		72C0B0102AB7655700D50A0A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B00F2AB7655700D50A0A /* APIError.swift */; };
+		72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */; };
+		72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */; };
+		72C0B0182AB83B3200D50A0A /* NetworkingMonitorManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0172AB83B3200D50A0A /* NetworkingMonitorManaging.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,17 +54,37 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		721D298F2ABCBE1F002F39F9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		721D29912AC1B8BC002F39F9 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		721D29952AC1CC90002F39F9 /* ColorModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModeToggleStyle.swift; sourceTree = "<group>"; };
+		721D29972AC1F29D002F39F9 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
+		721D29992AC321A0002F39F9 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		721D299B2AC322AB002F39F9 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
+		722F51092ABB4AAC0068FC47 /* AppBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBuilder.swift; sourceTree = "<group>"; };
+		722F51102ABCA2000068FC47 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		72B9ACDC2AB8AE950010D803 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		72B9ACDF2AB8B1CC0010D803 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		72B9ACE22AB8C15D0010D803 /* CalculatorOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorOperations.swift; sourceTree = "<group>"; };
+		72B9ACE42AB9C9A50010D803 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		72C0AFCF2AAA3EA000D50A0A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72C0AFD22AAA3EA000D50A0A /* CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorApp.swift; sourceTree = "<group>"; };
-		72C0AFD42AAA3EA000D50A0A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		72C0AFD42AAA3EA000D50A0A /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		72C0AFD62AAA3EA000D50A0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72C0AFD82AAA3EA000D50A0A /* Calculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calculator.entitlements; sourceTree = "<group>"; };
 		72C0AFDA2AAA3EA000D50A0A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		72C0AFE02AAA3EA100D50A0A /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		72C0AFE42AAA3EA100D50A0A /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
+		72C0AFE42AAA3EA100D50A0A /* CalculatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModelTests.swift; sourceTree = "<group>"; };
 		72C0AFEA2AAA3EA100D50A0A /* CalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		72C0AFEE2AAA3EA100D50A0A /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
-		72C0AFF02AAA3EA100D50A0A /* CalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		72C0AFFD2AAF067B00D50A0A /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		72C0AFFF2AAF3C1700D50A0A /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
+		72C0B0012AAF52C300D50A0A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		72C0B00A2AB05B0D00D50A0A /* CryptoCompareAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareAPIClient.swift; sourceTree = "<group>"; };
+		72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		72C0B00F2AB7655700D50A0A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyResponse.swift; sourceTree = "<group>"; };
+		72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyNetworkProvider.swift; sourceTree = "<group>"; };
+		72C0B0172AB83B3200D50A0A /* NetworkingMonitorManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingMonitorManaging.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +112,86 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		722F510B2ABC95AF0068FC47 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				72C0AFD22AAA3EA000D50A0A /* CalculatorApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		722F510C2ABC95D10068FC47 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				722F51102ABCA2000068FC47 /* SettingsManager.swift */,
+				721D29972AC1F29D002F39F9 /* SettingsButton.swift */,
+				72C0B0012AAF52C300D50A0A /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		722F510D2ABC95DF0068FC47 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				72C0AFFF2AAF3C1700D50A0A /* CalculatorButton.swift */,
+				72C0AFD42AAA3EA000D50A0A /* CalculatorView.swift */,
+				72C0AFFD2AAF067B00D50A0A /* CalculatorViewModel.swift */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		722F510E2ABC95F00068FC47 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				722F510D2ABC95DF0068FC47 /* Calculator */,
+				722F510C2ABC95D10068FC47 /* Settings */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		722F510F2ABC960F0068FC47 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				721D29952AC1CC90002F39F9 /* ColorModeToggleStyle.swift */,
+				721D29912AC1B8BC002F39F9 /* BottomSheetView.swift */,
+				721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		72B9ACDB2AB8AE780010D803 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				72B9ACDC2AB8AE950010D803 /* String+Extensions.swift */,
+				72B9ACE42AB9C9A50010D803 /* Double+Extensions.swift */,
+				721D29992AC321A0002F39F9 /* View+Extensions.swift */,
+				721D299B2AC322AB002F39F9 /* Image+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		72B9ACDE2AB8B1A90010D803 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				721D298F2ABCBE1F002F39F9 /* Colors.swift */,
+				72B9ACDF2AB8B1CC0010D803 /* Colors.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		72B9ACE12AB8C1400010D803 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				72B9ACE22AB8C15D0010D803 /* CalculatorOperations.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		72C0AFC62AAA3EA000D50A0A = {
 			isa = PBXGroup;
 			children = (
 				72C0AFD12AAA3EA000D50A0A /* Calculator */,
 				72C0AFE32AAA3EA100D50A0A /* CalculatorTests */,
-				72C0AFED2AAA3EA100D50A0A /* CalculatorUITests */,
 				72C0AFD02AAA3EA000D50A0A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,9 +209,16 @@
 		72C0AFD12AAA3EA000D50A0A /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				72C0AFD22AAA3EA000D50A0A /* CalculatorApp.swift */,
-				72C0AFD42AAA3EA000D50A0A /* ContentView.swift */,
+				722F510B2ABC95AF0068FC47 /* Application */,
+				722F51092ABB4AAC0068FC47 /* AppBuilder.swift */,
+				722F510E2ABC95F00068FC47 /* Scenes */,
+				722F510F2ABC960F0068FC47 /* Components */,
+				72B9ACE12AB8C1400010D803 /* Operations */,
+				72B9ACDB2AB8AE780010D803 /* Extensions */,
+				72C0B00C2AB764FA00D50A0A /* Network */,
+				72C0B0092AB0592800D50A0A /* API */,
 				72C0AFD62AAA3EA000D50A0A /* Assets.xcassets */,
+				72B9ACDE2AB8B1A90010D803 /* Resources */,
 				72C0AFD82AAA3EA000D50A0A /* Calculator.entitlements */,
 				72C0AFD92AAA3EA000D50A0A /* Preview Content */,
 			);
@@ -115,18 +236,29 @@
 		72C0AFE32AAA3EA100D50A0A /* CalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				72C0AFE42AAA3EA100D50A0A /* CalculatorTests.swift */,
+				72C0AFE42AAA3EA100D50A0A /* CalculatorViewModelTests.swift */,
 			);
 			path = CalculatorTests;
 			sourceTree = "<group>";
 		};
-		72C0AFED2AAA3EA100D50A0A /* CalculatorUITests */ = {
+		72C0B0092AB0592800D50A0A /* API */ = {
 			isa = PBXGroup;
 			children = (
-				72C0AFEE2AAA3EA100D50A0A /* CalculatorUITests.swift */,
-				72C0AFF02AAA3EA100D50A0A /* CalculatorUITestsLaunchTests.swift */,
+				72C0B00A2AB05B0D00D50A0A /* CryptoCompareAPIClient.swift */,
+				72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */,
+				72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */,
+				72C0B00F2AB7655700D50A0A /* APIError.swift */,
 			);
-			path = CalculatorUITests;
+			path = API;
+			sourceTree = "<group>";
+		};
+		72C0B00C2AB764FA00D50A0A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */,
+				72C0B0172AB83B3200D50A0A /* NetworkingMonitorManaging.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B9ACE02AB8B1CC0010D803 /* Colors.xcassets in Resources */,
 				72C0AFDB2AAA3EA000D50A0A /* Preview Assets.xcassets in Resources */,
 				72C0AFD72AAA3EA000D50A0A /* Assets.xcassets in Resources */,
 			);
@@ -259,8 +392,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72C0AFD52AAA3EA000D50A0A /* ContentView.swift in Sources */,
+				72C0B0022AAF52C300D50A0A /* SettingsView.swift in Sources */,
+				721D29982AC1F29D002F39F9 /* SettingsButton.swift in Sources */,
+				721D299A2AC321A0002F39F9 /* View+Extensions.swift in Sources */,
+				721D29902ABCBE1F002F39F9 /* Colors.swift in Sources */,
+				721D29962AC1CC90002F39F9 /* ColorModeToggleStyle.swift in Sources */,
+				72C0B00B2AB05B0D00D50A0A /* CryptoCompareAPIClient.swift in Sources */,
+				721D29922AC1B8BC002F39F9 /* BottomSheetView.swift in Sources */,
+				72B9ACE32AB8C15D0010D803 /* CalculatorOperations.swift in Sources */,
+				72C0AFD52AAA3EA000D50A0A /* CalculatorView.swift in Sources */,
+				72C0AFFE2AAF067B00D50A0A /* CalculatorViewModel.swift in Sources */,
+				72C0B00E2AB7651200D50A0A /* NetworkProvider.swift in Sources */,
+				722F510A2ABB4AAC0068FC47 /* AppBuilder.swift in Sources */,
+				72C0B0002AAF3C1700D50A0A /* CalculatorButton.swift in Sources */,
+				722F51112ABCA2000068FC47 /* SettingsManager.swift in Sources */,
+				721D29942AC1BAE0002F39F9 /* RoundedCorner.swift in Sources */,
+				72B9ACE52AB9C9A50010D803 /* Double+Extensions.swift in Sources */,
+				72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */,
+				72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */,
 				72C0AFD32AAA3EA000D50A0A /* CalculatorApp.swift in Sources */,
+				72C0B0182AB83B3200D50A0A /* NetworkingMonitorManaging.swift in Sources */,
+				72B9ACDD2AB8AE950010D803 /* String+Extensions.swift in Sources */,
+				721D299C2AC322AB002F39F9 /* Image+Extensions.swift in Sources */,
+				72C0B0102AB7655700D50A0A /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72C0AFE52AAA3EA100D50A0A /* CalculatorTests.swift in Sources */,
+				72C0AFE52AAA3EA100D50A0A /* CalculatorViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +430,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72C0AFF12AAA3EA100D50A0A /* CalculatorUITestsLaunchTests.swift in Sources */,
-				72C0AFEF2AAA3EA100D50A0A /* CalculatorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Calculator/Preview Content\"";
+				DEVELOPMENT_TEAM = 7778V2PTFC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -427,7 +580,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -435,7 +588,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingapp.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,6 +606,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Calculator/Preview Content\"";
+				DEVELOPMENT_TEAM = 7778V2PTFC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -463,7 +619,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -471,7 +627,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codingapp.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

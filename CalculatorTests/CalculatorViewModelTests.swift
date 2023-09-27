@@ -1,8 +1,7 @@
 import XCTest
 @testable import Calculator
 
-final class CalculatorTests: XCTestCase {
-
+final class CalculatorViewModelTests: XCTestCase {
 
     override func setUp() async throws {
         try await super.setUp()

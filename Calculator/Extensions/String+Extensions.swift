@@ -1,7 +1,7 @@
 import Foundation
 
 extension String {
-    func toDouble() -> Double {
+    var double: Double {
         Double(self) ?? 0
     }
 }

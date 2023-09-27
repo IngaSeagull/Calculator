@@ -1,8 +1,7 @@
-//
-//  View+Extensions.swift
-//  Calculator
-//
-//  Created by Inga Soprun on 26/09/2023.
-//
+import SwiftUI
 
-import Foundation
+extension View {
+    func squareFrame(size: CGFloat) -> some View {
+        frame(width: size, height: size)
+    }
+}

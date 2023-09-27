@@ -1,8 +1,11 @@
 import SwiftUI
 
-struct BottomSheetView: View {
+struct BottomSheetView<Content: View>: View {
     
     @Binding var isShowing: Bool
+    @ViewBuilder let content: Content
+    private let maxHeight: CGFloat = UIScreen.main.bounds.height / 3
+    private let cornerRadius: CGFloat = 16
     
     var body: some View {
         
@@ -17,17 +20,13 @@ struct BottomSheetView: View {
                             isShowing = false
                         }
                     }
-                
-                VStack {
-                    
-                    Text("Hello sheet!")
-                    
+                ZStack {
+                    content
                 }
-                .frame(maxWidth: .infinity)
-                .frame(maxHeight: 250)
+                .frame(maxWidth: .infinity, maxHeight: maxHeight)
                 .background(.white)
-                .cornerRadius(16, corners: .topLeft)
-                .cornerRadius(16, corners: .topRight)
+                .cornerRadius(cornerRadius, corners: .topLeft)
+                .cornerRadius(cornerRadius, corners: .topRight)
                 .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
             
@@ -35,6 +34,5 @@ struct BottomSheetView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
         .animation(.easeInOut, value: isShowing)
-        
     }
 }

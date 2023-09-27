@@ -1,8 +1,6 @@
-//
-//  SettingsButton.swift
-//  Calculator
-//
-//  Created by Inga Soprun on 25/09/2023.
-//
-
 import Foundation
+
+struct SettingsButton: Identifiable {
+    let id: String
+    var isOn: Bool
+}
