@@ -115,7 +115,7 @@ extension CalculatorViewModel {
 }
 
 private extension CalculatorViewModel {
-    private func getButtons(with buttonTypes: [[CalculatorButtonType]]) -> [[CalculatorButton]] {
+    func getButtons(with buttonTypes: [[CalculatorButtonType]]) -> [[CalculatorButton]] {
         var buttons = [[CalculatorButton]]()
         for row in buttonTypes {
             var buttonsRow = [CalculatorButton]()
@@ -131,7 +131,7 @@ private extension CalculatorViewModel {
         return buttons
     }
     
-    private func fillSettingsButtons() {
+    func fillSettingsButtons() {
         settingsButtons = displayButtons.map { row in
             row.filter { $0.type.isVisibleInSettings }
         }
@@ -141,7 +141,7 @@ private extension CalculatorViewModel {
         }
     }
     
-    private func updateAppColorTheme() {
+    func updateAppColorTheme() {
         isDarkModeOn = !settingsMngr.isLightStyle
     }
     

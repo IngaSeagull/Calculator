@@ -23,74 +23,64 @@ struct CalculatorView: View {
         static let padding: CGFloat = 15
         static let buttonSpacing: CGFloat = 12
         static let maxCalculatorWidth: CGFloat = 460
+        static let isDeviceIPad = UIDevice.current.userInterfaceIdiom == .pad
+    }
+    
+    private var calculatorWidth: CGFloat {
+        var width = UIScreen.main.bounds.width - Constants.padding * 2
+        if width > Constants.maxCalculatorWidth {
+            width = Constants.maxCalculatorWidth
+        }
+        return width
+    }
+    
+    private var buttonWidth: CGFloat {
+        (calculatorWidth - (5 * Constants.buttonSpacing)) / 5
     }
     
     init(viewModel: CalculatorViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-    
+
     var body: some View {
-        ZStack {
-            Color.background
-            VStack {
-                
-                HStack {
-                    Spacer()
-                    Button {
-                        presentingBottomSheet = true
-                    } label: {
-                        ZStack {
-                            Circle()
-                                .tint(Color.background)
-                                .squareFrame(size: buttonWidth())
-                                .shadow()
-                            Image("settings")
-                                .scaledToFitSquareFrame(size: 30)
-                                .tint(.button2)
-                        }
+        GeometryReader { geometry in
+            VStack(alignment: .trailing) {
+                Button {
+                    presentingBottomSheet = true
+                } label: {
+                    ZStack {
+                        Circle()
+                            .tint(Color.background)
+                            .squareFrame(size: buttonWidth)
+                            .shadow()
+                        Image("settings")
+                            .scaledToFitSquareFrame(size: 30)
+                            .tint(.button2)
                     }
                 }
-                .padding(.bottom, 30)
-                
-                HStack {
-                    Spacer()
-                    Text(viewModel.visualValue)
-                        .font(.system(size: isDeviceIPad() ? 80 : 53))
-                        .foregroundColor(.white)
-                        .shadow()
-                }
+                Text(viewModel.visualValue)
+                    .font(.system(size: Constants.isDeviceIPad ? 80 : 53))
+                    .foregroundColor(.white)
+                    .shadow()
                 
                 HStack(spacing: Constants.buttonSpacing) {
                     ForEach(viewModel.displayButtons, id: \.self) { row in
                         VStack(spacing: Constants.buttonSpacing) {
                             ForEach(row, id: \.id) { item in
                                 if item.isVisible {
-                                    roundButton(item)
+                                    getRoundButton(item)
                                 }
                             }
                         }
                     }
                 }
             }
-            .frame(width: calculatorWidth())
-            .padding(Constants.padding)
+            .frame(width: geometry.size.width, height: geometry.size.height * 0.9)
             
-            BottomSheetView(isShowing: $viewModel.presentingErrorPopup) {
-                ZStack {
-                    Color.alertBackground
-                    VStack {
-                        Text(viewModel.errorMessage)
-                            .font(.system(size: isDeviceIPad() ? 24 : 18))
-                            .foregroundColor(Color.alertTint)
-                        Image("error")
-                            .scaledToFitSquareFrame(size: 60)
-                            .foregroundColor(Color.alertTint)
-                    }
-                    .padding()
-                }
-            }
+            AlertBottomSheetView(isShowing: $viewModel.presentingErrorPopup, errorMessage: viewModel.errorMessage)
         }
         .ignoresSafeArea()
+        .background(Color.background)
         .sheet(isPresented: $presentingBottomSheet) {
             SettingsView(isDarkModeOn: $viewModel.isDarkModeOn, settingsButtons: $viewModel.settingsButtons)
         }
@@ -102,36 +92,21 @@ struct CalculatorView: View {
         .preferredColorScheme(viewModel.isDarkModeOn ? .dark : .light)
     }
     
-    func calculatorWidth() -> CGFloat {
-        var width = UIScreen.main.bounds.width - Constants.padding * 2
-        if width > Constants.maxCalculatorWidth {
-            width = Constants.maxCalculatorWidth
-        }
-        return width
-    }
-    
-    func buttonWidth() -> CGFloat {
-        (calculatorWidth() - (5 * Constants.buttonSpacing)) / 5
-    }
-    
-    func roundButton(_ button: CalculatorButton) -> some View {
+    private func getRoundButton(_ button: CalculatorButton) -> some View {
         Button(action: {
             viewModel.didTap(button.type)
         }, label: {
             Text(button.name)
-                .font(.system(size: isDeviceIPad() ? 24 : 18))
-                .bold()
-                .frame(width: buttonWidth(), height: buttonWidth())
-                .background(button.type.buttonColor)
-                .cornerRadius(buttonWidth() / 2)
+                .font(.system(size: Constants.isDeviceIPad ? 24 : 18).bold())
+                .squareFrame(size: buttonWidth)
                 .foregroundColor(Color.buttonTint)
+                .background(
+                    Circle()
+                        .foregroundColor(button.type.buttonColor)
+                )
                 
         })
         .shadow()
-    }
-    
-    func isDeviceIPad() -> Bool {
-        UIDevice.current.userInterfaceIdiom == .pad
     }
 }
 

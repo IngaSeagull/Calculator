@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		721D29902ABCBE1F002F39F9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D298F2ABCBE1F002F39F9 /* Colors.swift */; };
-		721D29922AC1B8BC002F39F9 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29912AC1B8BC002F39F9 /* BottomSheetView.swift */; };
+		721D29922AC1B8BC002F39F9 /* AlertBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29912AC1B8BC002F39F9 /* AlertBottomSheetView.swift */; };
 		721D29942AC1BAE0002F39F9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */; };
 		721D29962AC1CC90002F39F9 /* ColorModeToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29952AC1CC90002F39F9 /* ColorModeToggleStyle.swift */; };
 		721D29982AC1F29D002F39F9 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29972AC1F29D002F39F9 /* SettingsButton.swift */; };
@@ -55,7 +55,7 @@
 
 /* Begin PBXFileReference section */
 		721D298F2ABCBE1F002F39F9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		721D29912AC1B8BC002F39F9 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		721D29912AC1B8BC002F39F9 /* AlertBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBottomSheetView.swift; sourceTree = "<group>"; };
 		721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		721D29952AC1CC90002F39F9 /* ColorModeToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModeToggleStyle.swift; sourceTree = "<group>"; };
 		721D29972AC1F29D002F39F9 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				721D29952AC1CC90002F39F9 /* ColorModeToggleStyle.swift */,
-				721D29912AC1B8BC002F39F9 /* BottomSheetView.swift */,
+				721D29912AC1B8BC002F39F9 /* AlertBottomSheetView.swift */,
 				721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */,
 			);
 			path = Components;
@@ -398,7 +398,7 @@
 				721D29902ABCBE1F002F39F9 /* Colors.swift in Sources */,
 				721D29962AC1CC90002F39F9 /* ColorModeToggleStyle.swift in Sources */,
 				72C0B00B2AB05B0D00D50A0A /* CryptoCompareAPIClient.swift in Sources */,
-				721D29922AC1B8BC002F39F9 /* BottomSheetView.swift in Sources */,
+				721D29922AC1B8BC002F39F9 /* AlertBottomSheetView.swift in Sources */,
 				72B9ACE32AB8C15D0010D803 /* CalculatorOperations.swift in Sources */,
 				72C0AFD52AAA3EA000D50A0A /* CalculatorView.swift in Sources */,
 				72C0AFFE2AAF067B00D50A0A /* CalculatorViewModel.swift in Sources */,
