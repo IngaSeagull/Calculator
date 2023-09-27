@@ -24,7 +24,6 @@ struct BottomSheetView<Content: View>: View {
                     content
                 }
                 .frame(maxWidth: .infinity, maxHeight: maxHeight)
-                .background(.white)
                 .cornerRadius(cornerRadius, corners: .topLeft)
                 .cornerRadius(cornerRadius, corners: .topRight)
                 .transition(.opacity.combined(with: .move(edge: .bottom)))

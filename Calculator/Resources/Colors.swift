@@ -28,4 +28,12 @@ extension Color {
     public static var button5: Color {
         return Color("button5")
     }
+    
+    public static var alertBackground: Color {
+        .button2
+    }
+    
+    public static var alertTint: Color {
+        .buttonTint
+    }
 }

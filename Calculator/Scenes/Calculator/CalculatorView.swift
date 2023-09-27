@@ -81,12 +81,14 @@ struct CalculatorView: View {
             
             BottomSheetView(isShowing: $viewModel.presentingErrorPopup) {
                 ZStack {
-                    Color.background // TODO: fix colors
+                    Color.alertBackground
                     VStack {
                         Text(viewModel.errorMessage)
                             .font(.system(size: isDeviceIPad() ? 24 : 18))
+                            .foregroundColor(Color.alertTint)
                         Image("error")
-                            .scaledToFitSquareFrame(size: 80)
+                            .scaledToFitSquareFrame(size: 60)
+                            .foregroundColor(Color.alertTint)
                     }
                     .padding()
                 }
@@ -122,7 +124,7 @@ struct CalculatorView: View {
         }, label: {
             Text(button.name)
                 .font(.system(size: isDeviceIPad() ? 24 : 18))
-                .bold() // TODO: font for iPad
+                .bold()
                 .frame(width: buttonWidth(), height: buttonWidth())
                 .background(button.type.buttonColor)
                 .cornerRadius(buttonWidth() / 2)
