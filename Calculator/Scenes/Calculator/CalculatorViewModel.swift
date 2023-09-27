@@ -158,7 +158,7 @@ private extension CalculatorViewModel {
             .sink { [weak self] isPopupVisible in
                 guard let self else { return }
                 if !isPopupVisible {
-                    errorMessage = ""
+                    self.errorMessage = ""
                 }
             }
             .store(in: &cancellables)
