@@ -1,7 +1,12 @@
 import Foundation
 import Combine
 
-final class SettingsManager {
+protocol SettingsManagerProtocol {
+    var isLightStyle: Bool { get set }
+    var disabledButtons: [String] { get set }
+}
+
+final class SettingsManager: SettingsManagerProtocol {
     private let userDefaults: UserDefaults
     @Published var isLightStyle = false
     @Published var disabledButtons = [String]()

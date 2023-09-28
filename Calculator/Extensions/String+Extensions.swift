@@ -5,7 +5,11 @@ extension String {
         Double(self) ?? 0
     }
     
-//    func localized() -> String.LocalizationValue {
-//        String(localized: self)
-//    }
+    var localized: String {
+        NSLocalizedString(self, comment: "")
+    }
+    
+    func localized(_ args: CVarArg...) -> String {
+        String(format: localized, args)
+    }
 }

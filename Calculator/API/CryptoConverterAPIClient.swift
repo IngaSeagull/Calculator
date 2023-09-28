@@ -1,10 +1,10 @@
 import Foundation
 
-protocol APIClient {
+protocol APIClientProtocol {
     func getUSDFromBitcoin() async -> Result<Double, APIError>
 }
 
-final class CryptoConverterAPIClient: APIClient {
+final class CryptoConverterAPIClient: APIClientProtocol {
     private let session: URLSession
     
     private enum Constants {

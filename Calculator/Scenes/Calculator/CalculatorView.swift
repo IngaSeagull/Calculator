@@ -18,24 +18,18 @@ fileprivate extension CalculatorButtonType {
 struct CalculatorView <ViewModel>: View where ViewModel: CalculatorViewModelProtocol {
     @StateObject private var viewModel: ViewModel
     @State private var presentingBottomSheet = false
-
-//        private let padding: CGFloat = 15
-        private let buttonSpacing: CGFloat = 10
-//        private let maxCalculatorWidth: CGFloat = 460
-    
-//    private var calculatorWidth: CGFloat {
-//        var width = UIScreen.main.bounds.width - Constants.padding * 2
-//        if width > Constants.maxCalculatorWidth {
-//            width = Constants.maxCalculatorWidth
-//        }
-//        return width
-//    }
-//
+    private let buttonSpacing: CGFloat = 10
     
     // TODO: rename all
     private func getButtonWidth(from geometrySize: CGSize) -> CGFloat {
+        let maxButtonWidth: CGFloat = 100
         let width = geometrySize.width < geometrySize.height ? geometrySize.width : geometrySize.height
-        return (width - (6 * buttonSpacing)) / 6
+        let rowsCount: CGFloat = geometrySize.width > geometrySize.height ? 6 : 5
+        var buttonWidth = (width - (rowsCount * buttonSpacing)) / rowsCount
+        if buttonWidth > maxButtonWidth {
+            buttonWidth = maxButtonWidth
+        }
+        return buttonWidth
     }
     
     init(viewModel: ViewModel) {
@@ -49,13 +43,13 @@ struct CalculatorView <ViewModel>: View where ViewModel: CalculatorViewModelProt
             ZStack {
                 Circle()
                     .tint(Color.background)
-                    .squareFrame(size: buttonWidth) // TODO
+                    .squareFrame(size: buttonWidth)
                     .shadow()
                 Image("settings")
                     .scaledToFitSquareFrame(size: buttonWidth / 2)
                     .tint(.button2)
             }
-            .padding(20)
+            .padding(.top, 25)
         }
     }
 
@@ -67,6 +61,7 @@ struct CalculatorView <ViewModel>: View where ViewModel: CalculatorViewModelProt
                         Spacer()
                         if geometry.size.width > geometry.size.height {
                             getSettingsButton(buttonWidth: getButtonWidth(from: geometry.size))
+                                .padding(.trailing, 20)
                         }
                     }
                     Spacer()
@@ -96,19 +91,18 @@ struct CalculatorView <ViewModel>: View where ViewModel: CalculatorViewModelProt
                             VStack(spacing: buttonSpacing) {
                                 if geometry.size.width > geometry.size.height {
                                     ForEach(row.filter { $0.isVisible && $0.type.displayType != .flexible }) { item in
-                                        getRoundButton(item, buttonWidth: getButtonWidth(from: geometry.size)) // for iPad 80?
+                                        getRoundButton(item, buttonWidth: getButtonWidth(from: geometry.size))
                                     }
                                 } else {
                                     ForEach(row.filter { $0.isVisible }) { item in
-                                        getRoundButton(item, buttonWidth: getButtonWidth(from: geometry.size)) // for iPad 80?
+                                        getRoundButton(item, buttonWidth: getButtonWidth(from: geometry.size))
                                     }
                                 }
                             }
                         }
                     }
                 }
-                .background(.yellow)
-                .frame(width: geometry.size.width, height: geometry.size.height)// * 0.9)
+                .frame(width: geometry.size.width, height: geometry.size.height)
                 
                 AlertBottomSheetView(isShowing: $viewModel.presentingErrorPopup, errorMessage: viewModel.errorMessage)
             }

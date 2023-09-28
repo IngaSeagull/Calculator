@@ -32,7 +32,7 @@ final class CalculatorViewModelTests: XCTestCase {
             buttonTypes: buttons,
             apiClient: cryptoClientMock,
             internetMonitor: NetworkMonitorManager(),
-            operationMngr: CalculatorOperations(),
+            operationMngr: CalculatorOfflineOperations(),
             settingsMngr: settingsMngr
         )
         try await super.setUp()
@@ -203,7 +203,12 @@ final class CalculatorViewModelTests: XCTestCase {
     }
     
     func test_bitcoinButtonTapped() {
-        // TODO
+        sut.visualValue = "9"
+        sut.isInternetConnected = false
+        sut.bitcoinButtonTapped()
+        
+        XCTAssertTrue(sut.presentingErrorPopup)
+        XCTAssertEqual(sut.errorMessage, "NoInternetMessage")
     }
     
     func test_perfomBitcoint() async {
@@ -247,5 +252,17 @@ final class CalculatorViewModelTests: XCTestCase {
         
         XCTAssertTrue(sut.presentingErrorPopup)
         XCTAssertEqual(sut.errorMessage, erorMessage)
+    }
+    
+    func test_performMathOperation() {
+        sut.visualValue = "2"
+        sut.operationNumber = 3
+        sut.currentOperation = .add
+        sut.inputInProgress = true
+        let expectedValue = sut.visualValue.double + sut.operationNumber
+        
+        sut.performMathOperation()
+        
+        XCTAssertEqual(sut.visualValue, expectedValue.stringWithoutZeroFraction)
     }
 }

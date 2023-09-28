@@ -14,7 +14,7 @@ struct AppBuilder {
             buttonTypes: buttons,
             apiClient: CryptoConverterAPIClient(),
             internetMonitor: NetworkMonitorManager(),
-            operationMngr: CalculatorOperations(),
+            operationMngr: CalculatorOfflineOperations(),
             settingsMngr: SettingsManager()
         )
         return CalculatorView(viewModel: calulatorViewModel)

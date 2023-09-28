@@ -1,12 +1,5 @@
 import Foundation
 
-enum OperationType {
-    case add
-    case subtract
-    case multiply
-    case divide
-}
-
 enum CalculatorButtonType: String {
     case addition = "+"
     case subtraction = "-"

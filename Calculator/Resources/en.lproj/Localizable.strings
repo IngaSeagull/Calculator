@@ -2,4 +2,5 @@
 "ColorMode" = "Color mode";
 "ButtonsVisibility" = "Buttons visibility";
 "NoInternetMessage" = "No Internet Connection!\nAn Internet connection is required for this operation.";
-"TextLimitErrorMessage" = "The value exceeds the character limit";
+"TextLimitErrorMessage" = "The value exceeds the %d character limit";
+"Result" = "Result:\n%@\n";

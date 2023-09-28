@@ -10,13 +10,6 @@ protocol CalculatorViewModelProtocol: ObservableObject {
     var isDarkModeOn: Bool { get set }
     var errorMessage: String { get }
     
-//    init(
-//        buttonTypes: [[CalculatorButtonType]],
-//        apiClient: APIClient,
-//        internetMonitor: InternetMonitorManaging,
-//        operationMngr: CalculatorOperations,
-//        settingsMngr: SettingsManager
-//    )
     func updateSettings()
     func updateDisplayButtons()
     func didTap(_ button: CalculatorButtonType)
@@ -29,27 +22,27 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
     @Published var displayButtons = [[CalculatorButton]]()
     @Published var settingsButtons = [SettingsButton]()
     @Published var isDarkModeOn = false
-    var errorMessage = "TextLimitErrorMessage"// \(textLimit)"//""
+    var errorMessage = ""
     
-    private let apiClient: APIClient
+    private let apiClient: APIClientProtocol
     private let internetMonitor: InternetMonitorProtocol
-    private let operationMngr: CalculatorOperations
-    private let settingsMngr: SettingsManager
+    private let operationMngr: CalculatorOfflineOperationsProtocol
+    private var settingsMngr: SettingsManagerProtocol
     
     var operationNumber: Double = 0
     var currentOperation: OperationType?
     var isInternetConnected = false
     var cancellables = Set<AnyCancellable>()
-    let textLimit = 10
-//        static let textLimitErrorMessage = "The value exceeds the \(textLimit) character limit"
+    static let textLimit = 10
+    let textLimitErrorMessage = "TextLimitErrorMessage".localized(textLimit)
 
     
     init(
         buttonTypes: [[CalculatorButtonType]],
-        apiClient: APIClient,
+        apiClient: APIClientProtocol,
         internetMonitor: InternetMonitorProtocol,
-        operationMngr: CalculatorOperations,
-        settingsMngr: SettingsManager
+        operationMngr: CalculatorOfflineOperationsProtocol,
+        settingsMngr: SettingsManagerProtocol
     ) {
         self.apiClient = apiClient
         self.internetMonitor = internetMonitor
@@ -106,16 +99,16 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
             if visualValue.contains(button.rawValue) {
                 break
             }
-            if inputInProgress && visualValue.count == textLimit {
-                presentError(message: "TextLimitErrorMessage \(textLimit)")
+            if inputInProgress && visualValue.count == CalculatorViewModel.textLimit {
+                presentError(message: textLimitErrorMessage) //  TODO: merge
                 return
             }
             visualValue = visualValue + button.rawValue
             inputInProgress = true
             
         case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
-            if inputInProgress && visualValue.count == textLimit {
-                presentError(message: "TextLimitErrorMessage \(textLimit)")
+            if inputInProgress && visualValue.count == CalculatorViewModel.textLimit {
+                presentError(message: textLimitErrorMessage)
                 return
             }
             numberButtonTapped(button.rawValue)
@@ -222,7 +215,7 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
             return
         }
         if !isInternetConnected {
-            presentError(message: "NoInternetMessage")
+            presentError(message: "NoInternetMessage".localized)
             return
         }
         Task {
@@ -236,7 +229,7 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
         case .success(let usdValue):
             await MainActor.run {
                 let currentNumber = visualValue.double
-                let result = operationMngr.multiply(currentNumber, by: usdValue)
+                let result = operationMngr.perform(operation: .multiply, firstOperand: usdValue, secondOperand: currentNumber)
                 resetOperationAndUpdateValue(result)
             }
         case .failure(let error):
@@ -247,8 +240,9 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
     // TODO: rename
     func resetOperationAndUpdateValue(_ value: Double) {
         let stringValue = value.stringWithoutZeroFraction
-        if stringValue.count > textLimit {
-//            presentError(message: "Result:\n\(stringValue)\n\(textLimitErrorMessage)")
+        if stringValue.count > CalculatorViewModel.textLimit {
+            let errorMessage = "Result".localized(stringValue) + textLimitErrorMessage
+            presentError(message: errorMessage)
             resetOperationAndUpdateValue(0)
             return
         }
@@ -274,16 +268,7 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
             resetOperationAndUpdateValue(currentNumber)
             return
         }
-        
-        switch currentOperation {
-        case .add:
-            resetOperationAndUpdateValue(operationMngr.add(operationNumber, to: currentNumber))
-        case .subtract:
-            resetOperationAndUpdateValue(operationMngr.subtract(operationNumber, from: currentNumber))
-        case .multiply:
-            resetOperationAndUpdateValue(operationMngr.multiply(operationNumber, by: currentNumber))
-        case .divide:
-            resetOperationAndUpdateValue(operationMngr.divide(operationNumber, by: currentNumber))
-        }
+        let result = operationMngr.perform(operation: currentOperation, firstOperand: operationNumber, secondOperand: currentNumber)
+        resetOperationAndUpdateValue(result)
     }
 }
