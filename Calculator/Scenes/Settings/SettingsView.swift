@@ -14,16 +14,22 @@ struct SettingsView: View {
             Section {
                 Text("Settings")
             }
-            Section("Color mode") {
+            Section("ColorMode") {
                 Toggle("", isOn: $isDarkModeOn)
                     .toggleStyle(ColorModeToggleStyle())
             }
-            Section("Buttons visibility") {
+            Section("ButtonsVisibility") {
                 ForEach($settingsButtons) { $button in
                     Toggle(button.id, isOn: $button.isOn)
                 }
             }
         }
         .preferredColorScheme(isDarkModeOn ? .dark : .light)
+    }
+}
+
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView(isDarkModeOn: .constant(true), settingsButtons: .constant([SettingsButton(id: "con", isOn: true)]))
     }
 }

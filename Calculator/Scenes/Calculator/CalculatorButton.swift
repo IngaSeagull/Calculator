@@ -37,6 +37,12 @@ enum CalculatorButtonType: String {
     case delete = "del"
 }
 
+enum ButtonDisplayType {
+    case dynamic
+    case fixed
+    case flexible
+}
+
 extension CalculatorButtonType {
     var operation: OperationType? {
         switch self {
@@ -53,18 +59,24 @@ extension CalculatorButtonType {
         }
     }
     
-    var isVisibleInSettings: Bool {
+    var displayType: ButtonDisplayType {
         switch self {
         case .addition, .subtraction, .multiplication, .division, .sin, .cos, .bitcoin:
-            return true
-        case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .decimal, .equal, .clear, .negative, .delete:
-            return false
+            return .dynamic
+        case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine, .decimal, .equal:
+            return .fixed
+        case .clear, .negative, .delete:
+            return .flexible
         }
+    }
+    
+    var isVisibleInSettings: Bool {
+        displayType == .dynamic
     }
 }
 
 struct CalculatorButton: Identifiable, Hashable {
-    let id = UUID()
+    var id: CalculatorButtonType { type }
     let type: CalculatorButtonType
     var isVisible: Bool
     var name: String {

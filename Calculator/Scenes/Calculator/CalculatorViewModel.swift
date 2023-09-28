@@ -1,34 +1,53 @@
 import Foundation
 import Combine
 
-final class CalculatorViewModel: ObservableObject {
+protocol CalculatorViewModelProtocol: ObservableObject {
+    var presentingErrorPopup: Bool { get set }
+    var visualValue: String { get }
+    var inputInProgress: Bool { get }
+    var displayButtons: [[CalculatorButton]] { get }
+    var settingsButtons: [SettingsButton] { get set }
+    var isDarkModeOn: Bool { get set }
+    var errorMessage: String { get }
+    
+//    init(
+//        buttonTypes: [[CalculatorButtonType]],
+//        apiClient: APIClient,
+//        internetMonitor: InternetMonitorManaging,
+//        operationMngr: CalculatorOperations,
+//        settingsMngr: SettingsManager
+//    )
+    func updateSettings()
+    func updateDisplayButtons()
+    func didTap(_ button: CalculatorButtonType)
+}
+
+final class CalculatorViewModel: CalculatorViewModelProtocol {
     @Published var presentingErrorPopup = false
     @Published var visualValue = "0"
     @Published var inputInProgress = false
     @Published var displayButtons = [[CalculatorButton]]()
     @Published var settingsButtons = [SettingsButton]()
     @Published var isDarkModeOn = false
-    var errorMessage = ""
+    var errorMessage = "TextLimitErrorMessage"// \(textLimit)"//""
     
     private let apiClient: APIClient
-    private let internetMonitor: InternetMonitorManaging
+    private let internetMonitor: InternetMonitorProtocol
     private let operationMngr: CalculatorOperations
     private let settingsMngr: SettingsManager
     
-    private var operationNumber: Double = 0
-    private var currentOperation: OperationType?
-    private var isInternetConnected = false
-    private var cancellables = Set<AnyCancellable>()
-    private enum Constants {
-        static let textLimit = 10
-        static let noInternetMessage = "No Internet Connection!\nAn Internet connection is required for this operation."
-        static let textLimitErrorMessage = "The value exceeds the \(Constants.textLimit) character limit"
-    }
+    var operationNumber: Double = 0
+    var currentOperation: OperationType?
+    var isInternetConnected = false
+    var cancellables = Set<AnyCancellable>()
+    let textLimit = 10
+//        static let textLimitErrorMessage = "The value exceeds the \(textLimit) character limit"
+
     
     init(
         buttonTypes: [[CalculatorButtonType]],
         apiClient: APIClient,
-        internetMonitor: InternetMonitorManaging,
+        internetMonitor: InternetMonitorProtocol,
         operationMngr: CalculatorOperations,
         settingsMngr: SettingsManager
     ) {
@@ -43,9 +62,6 @@ final class CalculatorViewModel: ObservableObject {
         fillSettingsButtons()
         createBindings()
     }
-}
-
-extension CalculatorViewModel {
     
     func updateSettings() {
         settingsMngr.disabledButtons = settingsButtons
@@ -90,16 +106,16 @@ extension CalculatorViewModel {
             if visualValue.contains(button.rawValue) {
                 break
             }
-            if inputInProgress && visualValue.count == Constants.textLimit {
-                presentError(message: Constants.textLimitErrorMessage)
+            if inputInProgress && visualValue.count == textLimit {
+                presentError(message: "TextLimitErrorMessage \(textLimit)")
                 return
             }
             visualValue = visualValue + button.rawValue
             inputInProgress = true
             
         case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
-            if inputInProgress && visualValue.count == Constants.textLimit {
-                presentError(message: Constants.textLimitErrorMessage)
+            if inputInProgress && visualValue.count == textLimit {
+                presentError(message: "TextLimitErrorMessage \(textLimit)")
                 return
             }
             numberButtonTapped(button.rawValue)
@@ -112,9 +128,8 @@ extension CalculatorViewModel {
             performMathOperation()
         }
     }
-}
-
-private extension CalculatorViewModel {
+    
+    // TODO: rename
     func getButtons(with buttonTypes: [[CalculatorButtonType]]) -> [[CalculatorButton]] {
         var buttons = [[CalculatorButton]]()
         for row in buttonTypes {
@@ -207,7 +222,7 @@ private extension CalculatorViewModel {
             return
         }
         if !isInternetConnected {
-            presentError(message: Constants.noInternetMessage)
+            presentError(message: "NoInternetMessage")
             return
         }
         Task {
@@ -232,8 +247,8 @@ private extension CalculatorViewModel {
     // TODO: rename
     func resetOperationAndUpdateValue(_ value: Double) {
         let stringValue = value.stringWithoutZeroFraction
-        if stringValue.count > Constants.textLimit {
-            presentError(message: "Result:\n\(stringValue)\n\(Constants.textLimitErrorMessage)")
+        if stringValue.count > textLimit {
+//            presentError(message: "Result:\n\(stringValue)\n\(textLimitErrorMessage)")
             resetOperationAndUpdateValue(0)
             return
         }

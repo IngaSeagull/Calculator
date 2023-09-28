@@ -2,11 +2,11 @@ import Foundation
 import Network
 import Combine
 
-public protocol InternetMonitorManaging {
+protocol InternetMonitorProtocol {
     var isInternetConnected: CurrentValueSubject<Bool, Never> { get }
 }
 
-final class NetworkMonitorManager: InternetMonitorManaging {
+final class NetworkMonitorManager: InternetMonitorProtocol {
     private let monitor: NWPathMonitor
     private let queue = DispatchQueue(label: "NetworkMonitor")
     private(set) var isInternetConnected = CurrentValueSubject<Bool, Never>(false)

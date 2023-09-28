@@ -1,16 +1,16 @@
 import Foundation
 import Combine
 
-final class SettingsManager: ObservableObject {
-    private let disabledButtonsKey = "disabledButtonsKey"
-    private let lightStyleKey = "lightStyleKey"
-    private let userDefaults = UserDefaults.standard
-    
+final class SettingsManager {
+    private let userDefaults: UserDefaults
     @Published var isLightStyle = false
     @Published var disabledButtons = [String]()
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
+    let disabledButtonsKey = "disabledButtonsKey"
+    let lightStyleKey = "lightStyleKey"
     
-    init() {
+    init(userDefaults: UserDefaults = UserDefaults.standard) {
+        self.userDefaults = userDefaults
         self.isLightStyle = userDefaults.bool(forKey: lightStyleKey)
         self.disabledButtons = userDefaults.object(forKey: disabledButtonsKey) as? [String] ?? [String]()
         createBindings()

@@ -15,69 +15,103 @@ fileprivate extension CalculatorButtonType {
     }
 }
 
-struct CalculatorView: View {
-    @StateObject private var viewModel: CalculatorViewModel
+struct CalculatorView <ViewModel>: View where ViewModel: CalculatorViewModelProtocol {
+    @StateObject private var viewModel: ViewModel
     @State private var presentingBottomSheet = false
+
+//        private let padding: CGFloat = 15
+        private let buttonSpacing: CGFloat = 10
+//        private let maxCalculatorWidth: CGFloat = 460
     
-    private enum Constants {
-        static let padding: CGFloat = 15
-        static let buttonSpacing: CGFloat = 12
-        static let maxCalculatorWidth: CGFloat = 460
-        static let isDeviceIPad = UIDevice.current.userInterfaceIdiom == .pad
+//    private var calculatorWidth: CGFloat {
+//        var width = UIScreen.main.bounds.width - Constants.padding * 2
+//        if width > Constants.maxCalculatorWidth {
+//            width = Constants.maxCalculatorWidth
+//        }
+//        return width
+//    }
+//
+    
+    // TODO: rename all
+    private func getButtonWidth(from geometrySize: CGSize) -> CGFloat {
+        let width = geometrySize.width < geometrySize.height ? geometrySize.width : geometrySize.height
+        return (width - (6 * buttonSpacing)) / 6
     }
     
-    private var calculatorWidth: CGFloat {
-        var width = UIScreen.main.bounds.width - Constants.padding * 2
-        if width > Constants.maxCalculatorWidth {
-            width = Constants.maxCalculatorWidth
-        }
-        return width
-    }
-    
-    private var buttonWidth: CGFloat {
-        (calculatorWidth - (5 * Constants.buttonSpacing)) / 5
-    }
-    
-    init(viewModel: CalculatorViewModel) {
+    init(viewModel: ViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
+    func getSettingsButton(buttonWidth: CGFloat) -> some View {
+        Button {
+            presentingBottomSheet = true
+        } label: {
+            ZStack {
+                Circle()
+                    .tint(Color.background)
+                    .squareFrame(size: buttonWidth) // TODO
+                    .shadow()
+                Image("settings")
+                    .scaledToFitSquareFrame(size: buttonWidth / 2)
+                    .tint(.button2)
+            }
+            .padding(20)
+        }
     }
 
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .trailing) {
-                Button {
-                    presentingBottomSheet = true
-                } label: {
-                    ZStack {
-                        Circle()
-                            .tint(Color.background)
-                            .squareFrame(size: buttonWidth)
-                            .shadow()
-                        Image("settings")
-                            .scaledToFitSquareFrame(size: 30)
-                            .tint(.button2)
+            ZStack {
+                VStack() {
+                    HStack {
+                        Spacer()
+                        if geometry.size.width > geometry.size.height {
+                            getSettingsButton(buttonWidth: getButtonWidth(from: geometry.size))
+                        }
                     }
+                    Spacer()
                 }
-                Text(viewModel.visualValue)
-                    .font(.system(size: Constants.isDeviceIPad ? 80 : 53))
-                    .foregroundColor(.white)
-                    .shadow()
-                
-                HStack(spacing: Constants.buttonSpacing) {
-                    ForEach(viewModel.displayButtons, id: \.self) { row in
-                        VStack(spacing: Constants.buttonSpacing) {
-                            ForEach(row, id: \.id) { item in
-                                if item.isVisible {
-                                    getRoundButton(item)
+                VStack(alignment: .trailing) {
+                    if geometry.size.width < geometry.size.height {
+                        getSettingsButton(buttonWidth: getButtonWidth(from: geometry.size))
+                    }
+                    Text(viewModel.visualValue)
+                        .font(.system(size: Constants.isDeviceIPad ? 80 : 53))
+                        .foregroundColor(.white)
+                        .shadow()
+                    
+                    HStack(spacing: buttonSpacing) {
+                        if geometry.size.width > geometry.size.height {
+                            VStack {
+                                ForEach(viewModel.displayButtons, id: \.self) { row in
+                                    VStack(spacing: buttonSpacing) {
+                                        ForEach(row.filter { $0.type.displayType == .flexible }) { item in
+                                            getRoundButton(item, buttonWidth: getButtonWidth(from: geometry.size))
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        ForEach(viewModel.displayButtons, id: \.self) { row in
+                            VStack(spacing: buttonSpacing) {
+                                if geometry.size.width > geometry.size.height {
+                                    ForEach(row.filter { $0.isVisible && $0.type.displayType != .flexible }) { item in
+                                        getRoundButton(item, buttonWidth: getButtonWidth(from: geometry.size)) // for iPad 80?
+                                    }
+                                } else {
+                                    ForEach(row.filter { $0.isVisible }) { item in
+                                        getRoundButton(item, buttonWidth: getButtonWidth(from: geometry.size)) // for iPad 80?
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                .background(.yellow)
+                .frame(width: geometry.size.width, height: geometry.size.height)// * 0.9)
+                
+                AlertBottomSheetView(isShowing: $viewModel.presentingErrorPopup, errorMessage: viewModel.errorMessage)
             }
-            .frame(width: geometry.size.width, height: geometry.size.height * 0.9)
-            
-            AlertBottomSheetView(isShowing: $viewModel.presentingErrorPopup, errorMessage: viewModel.errorMessage)
         }
         .ignoresSafeArea()
         .background(Color.background)
@@ -92,7 +126,7 @@ struct CalculatorView: View {
         .preferredColorScheme(viewModel.isDarkModeOn ? .dark : .light)
     }
     
-    private func getRoundButton(_ button: CalculatorButton) -> some View {
+    private func getRoundButton(_ button: CalculatorButton, buttonWidth: CGFloat) -> some View {
         Button(action: {
             viewModel.didTap(button.type)
         }, label: {
@@ -110,7 +144,7 @@ struct CalculatorView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         AppBuilder().buildCalculatorView()
     }

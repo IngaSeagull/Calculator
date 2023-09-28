@@ -1,6 +1,6 @@
 import Foundation
 
-struct SettingsButton: Identifiable {
+struct SettingsButton: Identifiable, Equatable {
     let id: String
     var isOn: Bool
 }

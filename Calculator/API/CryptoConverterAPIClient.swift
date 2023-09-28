@@ -4,7 +4,7 @@ protocol APIClient {
     func getUSDFromBitcoin() async -> Result<Double, APIError>
 }
 
-final class CryptoCompareAPIClient: APIClient {
+final class CryptoConverterAPIClient: APIClient {
     private let session: URLSession
     
     private enum Constants {

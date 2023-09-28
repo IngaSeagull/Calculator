@@ -49,3 +49,9 @@ struct AlertBottomSheetView: View {
         .animation(.easeInOut, value: isShowing)
     }
 }
+
+struct AlertBottomSheetView_Previews: PreviewProvider {
+    static var previews: some View {
+        AlertBottomSheetView(isShowing: .constant(true), errorMessage: "TextLimitErrorMessage")
+    }
+}

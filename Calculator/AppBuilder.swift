@@ -1,7 +1,8 @@
 import Foundation
+import SwiftUI
 
 struct AppBuilder {
-    func buildCalculatorView() -> CalculatorView {
+    func buildCalculatorView() -> CalculatorView<CalculatorViewModel> {
         let buttons: [[CalculatorButtonType]] = [
             [.clear, .seven, .four, .one, .zero],
             [.negative, .eight, .five, .two, .decimal],
@@ -11,7 +12,7 @@ struct AppBuilder {
         ]
         let calulatorViewModel = CalculatorViewModel(
             buttonTypes: buttons,
-            apiClient: CryptoCompareAPIClient(),
+            apiClient: CryptoConverterAPIClient(),
             internetMonitor: NetworkMonitorManager(),
             operationMngr: CalculatorOperations(),
             settingsMngr: SettingsManager()
