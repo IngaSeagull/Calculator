@@ -34,11 +34,11 @@
 		72C0B0102AB7655700D50A0A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B00F2AB7655700D50A0A /* APIError.swift */; };
 		72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */; };
 		72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */; };
-		72C0B0182AB83B3200D50A0A /* NetworkMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0172AB83B3200D50A0A /* NetworkMonitorManager.swift */; };
+		72C0B0182AB83B3200D50A0A /* InternetMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0172AB83B3200D50A0A /* InternetMonitorManager.swift */; };
 		72DF6C2B2AC56064003550FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF6C2A2AC56064003550FF /* Constants.swift */; };
 		72FBD04A2AC59390003A7E05 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FBD0492AC59390003A7E05 /* MockUserDefaults.swift */; };
 		72FBD04C2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FBD04B2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift */; };
-		72FBD04E2AC5AFCD003A7E05 /* NetworkMonitorManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FBD04D2AC5AFCD003A7E05 /* NetworkMonitorManagerMock.swift */; };
+		72FBD04E2AC5AFCD003A7E05 /* InternetMonitorManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FBD04D2AC5AFCD003A7E05 /* InternetMonitorManagerMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,12 +82,12 @@
 		72C0B00F2AB7655700D50A0A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyResponse.swift; sourceTree = "<group>"; };
 		72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyNetworkProvider.swift; sourceTree = "<group>"; };
-		72C0B0172AB83B3200D50A0A /* NetworkMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManager.swift; sourceTree = "<group>"; };
+		72C0B0172AB83B3200D50A0A /* InternetMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitorManager.swift; sourceTree = "<group>"; };
 		72DF6C2A2AC56064003550FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72FBD0482AC59288003A7E05 /* Calculator.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Calculator.xctestplan; sourceTree = "<group>"; };
 		72FBD0492AC59390003A7E05 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
 		72FBD04B2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoConverterAPIClientMock.swift; sourceTree = "<group>"; };
-		72FBD04D2AC5AFCD003A7E05 /* NetworkMonitorManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitorManagerMock.swift; sourceTree = "<group>"; };
+		72FBD04D2AC5AFCD003A7E05 /* InternetMonitorManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitorManagerMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +222,7 @@
 				722F510F2ABC960F0068FC47 /* Components */,
 				72B9ACE12AB8C1400010D803 /* Operations */,
 				72B9ACDB2AB8AE780010D803 /* Extensions */,
-				72C0B00C2AB764FA00D50A0A /* Network */,
+				72C0B00C2AB764FA00D50A0A /* Internet */,
 				72C0B0092AB0592800D50A0A /* API */,
 				72967CE22AC49911003B090D /* Resources */,
 				72C0AFD82AAA3EA000D50A0A /* Calculator.entitlements */,
@@ -243,9 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				72C0AFE42AAA3EA100D50A0A /* CalculatorViewModelTests.swift */,
-				72FBD0492AC59390003A7E05 /* MockUserDefaults.swift */,
-				72FBD04B2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift */,
-				72FBD04D2AC5AFCD003A7E05 /* NetworkMonitorManagerMock.swift */,
+				72DCB6E12AC5DD1C00F9B719 /* Mocks */,
 			);
 			path = CalculatorTests;
 			sourceTree = "<group>";
@@ -253,6 +251,7 @@
 		72C0B0092AB0592800D50A0A /* API */ = {
 			isa = PBXGroup;
 			children = (
+				72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */,
 				72C0B00A2AB05B0D00D50A0A /* CryptoConverterAPIClient.swift */,
 				72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */,
 				72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */,
@@ -261,13 +260,22 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		72C0B00C2AB764FA00D50A0A /* Network */ = {
+		72C0B00C2AB764FA00D50A0A /* Internet */ = {
 			isa = PBXGroup;
 			children = (
-				72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */,
-				72C0B0172AB83B3200D50A0A /* NetworkMonitorManager.swift */,
+				72C0B0172AB83B3200D50A0A /* InternetMonitorManager.swift */,
 			);
-			path = Network;
+			path = Internet;
+			sourceTree = "<group>";
+		};
+		72DCB6E12AC5DD1C00F9B719 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				72FBD0492AC59390003A7E05 /* MockUserDefaults.swift */,
+				72FBD04B2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift */,
+				72FBD04D2AC5AFCD003A7E05 /* InternetMonitorManagerMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,7 +399,7 @@
 				72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */,
 				72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */,
 				72C0AFD32AAA3EA000D50A0A /* CalculatorApp.swift in Sources */,
-				72C0B0182AB83B3200D50A0A /* NetworkMonitorManager.swift in Sources */,
+				72C0B0182AB83B3200D50A0A /* InternetMonitorManager.swift in Sources */,
 				72B9ACDD2AB8AE950010D803 /* String+Extensions.swift in Sources */,
 				721D299C2AC322AB002F39F9 /* Image+Extensions.swift in Sources */,
 				72C0B0102AB7655700D50A0A /* APIError.swift in Sources */,
@@ -406,7 +414,7 @@
 				72FBD04A2AC59390003A7E05 /* MockUserDefaults.swift in Sources */,
 				72C0AFE52AAA3EA100D50A0A /* CalculatorViewModelTests.swift in Sources */,
 				72FBD04C2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift in Sources */,
-				72FBD04E2AC5AFCD003A7E05 /* NetworkMonitorManagerMock.swift in Sources */,
+				72FBD04E2AC5AFCD003A7E05 /* InternetMonitorManagerMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +634,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7778V2PTFC;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -648,6 +657,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7778V2PTFC;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;

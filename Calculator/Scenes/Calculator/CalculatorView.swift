@@ -25,7 +25,7 @@ struct CalculatorView <ViewModel>: View where ViewModel: CalculatorViewModelProt
         let maxButtonWidth: CGFloat = 100
         let width = geometrySize.width < geometrySize.height ? geometrySize.width : geometrySize.height
         let rowsCount: CGFloat = geometrySize.width > geometrySize.height ? 6 : 5
-        var buttonWidth = (width - (rowsCount * buttonSpacing)) / rowsCount
+        var buttonWidth = (width - (rowsCount * buttonSpacing + 20)) / rowsCount
         if buttonWidth > maxButtonWidth {
             buttonWidth = maxButtonWidth
         }

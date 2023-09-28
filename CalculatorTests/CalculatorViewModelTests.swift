@@ -7,7 +7,7 @@ final class CalculatorViewModelTests: XCTestCase {
     var userDefaultsMock: SettingsManagerUserDefaultsMock!
     var settingsMngr: SettingsManager!
     var cryptoClientMock: CryptoConverterAPIClientMock!
-    var internetMonitorMock: NetworkMonitorManagerMock!
+    var internetMonitorMock: InternetMonitorManagerMock!
     
     let buttonAdd = CalculatorButton(type: .addition, isVisible: true)
     let buttonCos = CalculatorButton(type: .cos, isVisible: false)
@@ -27,11 +27,11 @@ final class CalculatorViewModelTests: XCTestCase {
         userDefaultsMock = SettingsManagerUserDefaultsMock()
         settingsMngr = SettingsManager(userDefaults: userDefaultsMock)
         cryptoClientMock = CryptoConverterAPIClientMock()
-        internetMonitorMock = NetworkMonitorManagerMock()
+        internetMonitorMock = InternetMonitorManagerMock()
         sut = CalculatorViewModel(
             buttonTypes: buttons,
             apiClient: cryptoClientMock,
-            internetMonitor: NetworkMonitorManager(),
+            internetMonitor: InternetMonitorManager(),
             operationMngr: CalculatorOfflineOperations(),
             settingsMngr: settingsMngr
         )
@@ -208,7 +208,7 @@ final class CalculatorViewModelTests: XCTestCase {
         sut.bitcoinButtonTapped()
         
         XCTAssertTrue(sut.presentingErrorPopup)
-        XCTAssertEqual(sut.errorMessage, "NoInternetMessage")
+        XCTAssertEqual(sut.errorMessage, "NoInternetMessage".localized)
     }
     
     func test_perfomBitcoint() async {

@@ -13,7 +13,7 @@ struct AppBuilder {
         let calulatorViewModel = CalculatorViewModel(
             buttonTypes: buttons,
             apiClient: CryptoConverterAPIClient(),
-            internetMonitor: NetworkMonitorManager(),
+            internetMonitor: InternetMonitorManager(),
             operationMngr: CalculatorOfflineOperations(),
             settingsMngr: SettingsManager()
         )
