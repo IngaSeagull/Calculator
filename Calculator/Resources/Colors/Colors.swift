@@ -29,6 +29,10 @@ extension Color {
         Color("button5")
     }
     
+    public static var colorToggle: Color {
+        .button5
+    }
+    
     public static var alertBackground: Color {
         .button2
     }

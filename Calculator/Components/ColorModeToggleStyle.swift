@@ -8,7 +8,7 @@ struct ColorModeToggleStyle: ToggleStyle {
                 .scaledToFit()
                 .frame(width: 30, height: 30)
             RoundedRectangle(cornerRadius: 16, style: .circular)
-                .fill(Color.button5) // TODO: change color name
+                .fill(Color.colorToggle)
                 .frame(width: 50, height: 29)
                 .overlay(
                     Circle()

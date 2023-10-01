@@ -237,7 +237,6 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
         }
     }
     
-    // TODO: rename
     func resetOperationAndUpdateValue(_ value: Double) {
         let stringValue = value.stringWithoutZeroFraction
         if stringValue.count > CalculatorViewModel.textLimit {

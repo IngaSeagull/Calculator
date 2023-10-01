@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		721B1BF02AC9A7C100F42F5C /* DeviceOrientationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721B1BEF2AC9A7C100F42F5C /* DeviceOrientationViewModifier.swift */; };
 		721D29902ABCBE1F002F39F9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D298F2ABCBE1F002F39F9 /* Colors.swift */; };
 		721D29922AC1B8BC002F39F9 /* AlertBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29912AC1B8BC002F39F9 /* AlertBottomSheetView.swift */; };
 		721D29942AC1BAE0002F39F9 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */; };
@@ -35,6 +36,7 @@
 		72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */; };
 		72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */; };
 		72C0B0182AB83B3200D50A0A /* InternetMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0172AB83B3200D50A0A /* InternetMonitorManager.swift */; };
+		72DCB6E32AC6D12100F9B719 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DCB6E22AC6D12100F9B719 /* CircleButtonView.swift */; };
 		72DF6C2B2AC56064003550FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF6C2A2AC56064003550FF /* Constants.swift */; };
 		72FBD04A2AC59390003A7E05 /* MockUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FBD0492AC59390003A7E05 /* MockUserDefaults.swift */; };
 		72FBD04C2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FBD04B2AC5AAB9003A7E05 /* CryptoConverterAPIClientMock.swift */; };
@@ -52,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		721B1BEF2AC9A7C100F42F5C /* DeviceOrientationViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceOrientationViewModifier.swift; sourceTree = "<group>"; };
 		721D298F2ABCBE1F002F39F9 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		721D29912AC1B8BC002F39F9 /* AlertBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBottomSheetView.swift; sourceTree = "<group>"; };
 		721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyResponse.swift; sourceTree = "<group>"; };
 		72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyNetworkProvider.swift; sourceTree = "<group>"; };
 		72C0B0172AB83B3200D50A0A /* InternetMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitorManager.swift; sourceTree = "<group>"; };
+		72DCB6E22AC6D12100F9B719 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		72DF6C2A2AC56064003550FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72FBD0482AC59288003A7E05 /* Calculator.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Calculator.xctestplan; sourceTree = "<group>"; };
 		72FBD0492AC59390003A7E05 /* MockUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefaults.swift; sourceTree = "<group>"; };
@@ -108,6 +112,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7221175A2AC7033F003E1834 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				721B1BEF2AC9A7C100F42F5C /* DeviceOrientationViewModifier.swift */,
+				722F51092ABB4AAC0068FC47 /* AppBuilder.swift */,
+				72DF6C2A2AC56064003550FF /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		722F510B2ABC95AF0068FC47 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +165,7 @@
 				721D29952AC1CC90002F39F9 /* ColorModeToggleStyle.swift */,
 				721D29912AC1B8BC002F39F9 /* AlertBottomSheetView.swift */,
 				721D29932AC1BAE0002F39F9 /* RoundedCorner.swift */,
+				72DCB6E22AC6D12100F9B719 /* CircleButtonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -216,8 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				722F510B2ABC95AF0068FC47 /* Application */,
-				722F51092ABB4AAC0068FC47 /* AppBuilder.swift */,
-				72DF6C2A2AC56064003550FF /* Constants.swift */,
+				7221175A2AC7033F003E1834 /* Helpers */,
 				722F510E2ABC95F00068FC47 /* Scenes */,
 				722F510F2ABC960F0068FC47 /* Components */,
 				72B9ACE12AB8C1400010D803 /* Operations */,
@@ -390,6 +404,7 @@
 				72B9ACE32AB8C15D0010D803 /* CalculatorOfflineOperations.swift in Sources */,
 				72C0AFD52AAA3EA000D50A0A /* CalculatorView.swift in Sources */,
 				72C0AFFE2AAF067B00D50A0A /* CalculatorViewModel.swift in Sources */,
+				721B1BF02AC9A7C100F42F5C /* DeviceOrientationViewModifier.swift in Sources */,
 				72C0B00E2AB7651200D50A0A /* NetworkProvider.swift in Sources */,
 				722F510A2ABB4AAC0068FC47 /* AppBuilder.swift in Sources */,
 				72C0B0002AAF3C1700D50A0A /* CalculatorButton.swift in Sources */,
@@ -398,6 +413,7 @@
 				72B9ACE52AB9C9A50010D803 /* Double+Extensions.swift in Sources */,
 				72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */,
 				72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */,
+				72DCB6E32AC6D12100F9B719 /* CircleButtonView.swift in Sources */,
 				72C0AFD32AAA3EA000D50A0A /* CalculatorApp.swift in Sources */,
 				72C0B0182AB83B3200D50A0A /* InternetMonitorManager.swift in Sources */,
 				72B9ACDD2AB8AE950010D803 /* String+Extensions.swift in Sources */,
@@ -569,8 +585,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -608,8 +623,7 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";

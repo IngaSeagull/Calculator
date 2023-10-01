@@ -4,3 +4,4 @@
 "NoInternetMessage" = "No Internet Connection!\nAn Internet connection is required for this operation.";
 "TextLimitErrorMessage" = "The value exceeds the %d character limit";
 "Result" = "Result:\n%@\n";
+"Close" = "Close";

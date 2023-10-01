@@ -3,7 +3,7 @@ import Foundation
 enum CalculatorButtonType: String {
     case addition = "+"
     case subtraction = "-"
-    case multiplication = "*"
+    case multiplication = "x"
     case division = "/"
     case sin
     case cos
