@@ -37,11 +37,14 @@ MVVM + modularity by design
 The project includes Unit tests written using the built-in framework XCTest and Mocks
 
 ## Design
-![IMG_1549](https://github.com/IngaSeagull/Calculator/assets/16067642/a74ded10-1932-4374-905a-9794c9c4b01e)
+![IMG_1549](https://github.com/IngaSeagull/Calculator/assets/16067642/a6e1f57d-b1d9-4818-8270-16568e86bdec)
 
-![IMG_1550](https://github.com/IngaSeagull/Calculator/assets/16067642/26a34583-0b38-4e53-96fa-d0a44e14eff8)
 
-![IMG_1548](https://github.com/IngaSeagull/Calculator/assets/16067642/a59bda59-36f4-4727-b0e1-3dc52883d863)
+![IMG_1550](https://github.com/IngaSeagull/Calculator/assets/16067642/ce7ffe9d-aab8-4ac7-aa9a-9ede660833ce)
+
+
+![IMG_1548](https://github.com/IngaSeagull/Calculator/assets/16067642/a15459d4-6e74-4393-9a85-8db34d06d479)
+
 
 ## Getting started
 1. Make sure you have the Xcode version 14.0 or above installed on your computer.
