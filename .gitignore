@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager
-# Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,swiftpackagemanager
+# Created by https://www.toptal.com/developers/gitignore/api/swift,xcode,swiftpackagemanager
+# Edit at https://www.toptal.com/developers/gitignore?templates=swift,xcode,swiftpackagemanager
 
 ### Swift ###
 # Xcode
@@ -43,7 +43,7 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 # Package.resolved
-*.xcodeproj
+# *.xcodeproj
 # Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
 # hence it is not needed unless you have added a package configuration file to your project
 # .swiftpm
@@ -88,6 +88,7 @@ iOSInjectionProject/
 ### SwiftPackageManager ###
 Packages
 xcuserdata
+*.xcodeproj
 
 
 ### Xcode ###
@@ -96,28 +97,11 @@ xcuserdata
 
 ### Xcode Patch ###
 *.xcodeproj/*
-!*.xcodeproj/project.xcworkspace/
-!*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 !*.xcodeproj/project.pbxproj
-!*.xcodeproj/*.xcworkspace/xcshareddata/
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-
-# SwiftGen
-MovanoRing/SourceFiles/Generated/*
-
-# macOS
-.DS_Store
-._.DS_Store
-**/.DS_Store
-**/._.DS_Store
-
-#Coverage reports
-reports/
-
-#python
-__pycache__
-
-# End of https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager
+# End of https://www.toptal.com/developers/gitignore/api/swift,xcode,swiftpackagemanager
