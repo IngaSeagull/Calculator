@@ -99,15 +99,15 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
             if visualValue.contains(button.rawValue) {
                 break
             }
-            if inputInProgress && visualValue.count == CalculatorViewModel.textLimit {
-                presentError(message: textLimitErrorMessage) //  TODO: merge
+            if isVisualValueTooLong() {
+                presentError(message: textLimitErrorMessage)
                 return
             }
             visualValue = visualValue + button.rawValue
             inputInProgress = true
             
         case .zero, .one, .two, .three, .four, .five, .six, .seven, .eight, .nine:
-            if inputInProgress && visualValue.count == CalculatorViewModel.textLimit {
+            if isVisualValueTooLong() {
                 presentError(message: textLimitErrorMessage)
                 return
             }
@@ -122,7 +122,10 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
         }
     }
     
-    // TODO: rename
+    func isVisualValueTooLong() -> Bool {
+        inputInProgress && visualValue.count == CalculatorViewModel.textLimit
+    }
+    
     func getButtons(with buttonTypes: [[CalculatorButtonType]]) -> [[CalculatorButton]] {
         var buttons = [[CalculatorButton]]()
         for row in buttonTypes {
@@ -195,7 +198,11 @@ final class CalculatorViewModel: CalculatorViewModelProtocol {
             return
         }
         let result = currentNumer * -1
-        visualValue = result.stringWithoutZeroFraction
+        if inputInProgress {
+            visualValue = result.stringWithoutZeroFraction
+        } else {
+            resetOperationAndUpdateValue(result)
+        }
     }
     
     func numberButtonTapped(_ inputNumber: String) {
