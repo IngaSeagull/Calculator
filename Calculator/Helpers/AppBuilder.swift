@@ -1,4 +1,5 @@
 import SwiftUI
+import CryptocurrencyNetworking
 
 struct AppBuilder {
     func buildCalculatorView() -> CalculatorView<CalculatorViewModel> {

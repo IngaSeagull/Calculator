@@ -13,41 +13,43 @@ struct CalculatorView <ViewModel: CalculatorViewModelProtocol>: View {
     }
     
     var body: some View {
-        ZStack {
-            getSettingsButton()
-            GeometryReader { geometry in
-                VStack(alignment: .trailing, spacing: 5) {
-                    Text(viewModel.visualValue)
-                        .font(.system(size: Constants.isDeviceIPad ? 80 : 53))
-                        .foregroundColor(.white)
-                        .shadow()
-                    withAnimation(.easeInOut) {
-                        getCalculatorButtons(geometrySize: geometry.size)
+        NavigationView {
+            ZStack {
+                getSettingsButton()
+                GeometryReader { geometry in
+                    VStack(alignment: .trailing, spacing: 5) {
+                        Text(viewModel.visualValue)
+                            .font(.system(size: Constants.isDeviceIPad ? 80 : 53))
+                            .foregroundColor(.white)
+                            .shadow()
+                        withAnimation(.easeInOut) {
+                            getCalculatorButtons(geometrySize: geometry.size)
+                        }
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    
+                    AlertBottomSheetView(isShowing: $viewModel.presentingErrorPopup, errorMessage: viewModel.errorMessage)
+                }
+                .sheet(isPresented: $presentingBottomSheet) {
+                    SettingsView(isDarkModeOn: $viewModel.isDarkModeOn, settingsButtons: $viewModel.settingsButtons, onCloseTap: {
+                        presentingBottomSheet.toggle()
+                    })
+                }
+                .onChange(of: presentingBottomSheet) { newValue in
+                    if !newValue {
+                        viewModel.updateSettings()
                     }
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height)
-                
-                AlertBottomSheetView(isShowing: $viewModel.presentingErrorPopup, errorMessage: viewModel.errorMessage)
-            }
-            .sheet(isPresented: $presentingBottomSheet) {
-                SettingsView(isDarkModeOn: $viewModel.isDarkModeOn, settingsButtons: $viewModel.settingsButtons, onCloseTap: {
-                    presentingBottomSheet.toggle()
-                })
-            }
-            .onChange(of: presentingBottomSheet) { newValue in
-                if !newValue {
-                    viewModel.updateSettings()
+                .onRotate { newOrientation in
+                    if newOrientation.isFlat || !newOrientation.isValidInterfaceOrientation || (Constants.isDeviceIPhone && newOrientation == .portraitUpsideDown) {
+                        return
+                    }
+                    orientation = newOrientation
                 }
             }
-            .onRotate { newOrientation in
-                if newOrientation.isFlat || !newOrientation.isValidInterfaceOrientation || (Constants.isDeviceIPhone && newOrientation == .portraitUpsideDown) {
-                    return
-                }
-                orientation = newOrientation
-            }
+            .background(Color.background)
+            .preferredColorScheme(viewModel.isDarkModeOn ? .dark : .light)
         }
-        .background(Color.background)
-        .preferredColorScheme(viewModel.isDarkModeOn ? .dark : .light)
     }
     
     private func getCalculatorButtons(geometrySize: CGSize) -> some View {
@@ -72,6 +74,7 @@ struct CalculatorView <ViewModel: CalculatorViewModelProtocol>: View {
     }
     
     private func getButtonWidth(from geometrySize: CGSize) -> CGFloat {
+        print("geometrySize: \(geometrySize)")
         let width = geometrySize.width < geometrySize.height ? geometrySize.width : geometrySize.height
         var buttonWidth = width * 0.16
         if buttonWidth > maxButtonWidth {

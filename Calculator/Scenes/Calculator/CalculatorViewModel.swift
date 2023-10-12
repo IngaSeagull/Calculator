@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import CryptocurrencyNetworking
 
 protocol CalculatorViewModelProtocol: ObservableObject {
     var presentingErrorPopup: Bool { get set }

@@ -17,6 +17,7 @@
 		721D299C2AC322AB002F39F9 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721D299B2AC322AB002F39F9 /* Image+Extensions.swift */; };
 		722F510A2ABB4AAC0068FC47 /* AppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722F51092ABB4AAC0068FC47 /* AppBuilder.swift */; };
 		722F51112ABCA2000068FC47 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722F51102ABCA2000068FC47 /* SettingsManager.swift */; };
+		724B8D222AD71A910034D5EA /* CryptocurrencyNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 724B8D212AD71A910034D5EA /* CryptocurrencyNetworking */; };
 		72967CE72AC49C5D003B090D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72967CE92AC49C5D003B090D /* Localizable.strings */; };
 		72B9ACDD2AB8AE950010D803 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B9ACDC2AB8AE950010D803 /* String+Extensions.swift */; };
 		72B9ACE02AB8B1CC0010D803 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72B9ACDF2AB8B1CC0010D803 /* Colors.xcassets */; };
@@ -30,11 +31,6 @@
 		72C0AFFE2AAF067B00D50A0A /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFFD2AAF067B00D50A0A /* CalculatorViewModel.swift */; };
 		72C0B0002AAF3C1700D50A0A /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0AFFF2AAF3C1700D50A0A /* CalculatorButton.swift */; };
 		72C0B0022AAF52C300D50A0A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0012AAF52C300D50A0A /* SettingsView.swift */; };
-		72C0B00B2AB05B0D00D50A0A /* CryptoConverterAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B00A2AB05B0D00D50A0A /* CryptoConverterAPIClient.swift */; };
-		72C0B00E2AB7651200D50A0A /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */; };
-		72C0B0102AB7655700D50A0A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B00F2AB7655700D50A0A /* APIError.swift */; };
-		72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */; };
-		72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */; };
 		72C0B0182AB83B3200D50A0A /* InternetMonitorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C0B0172AB83B3200D50A0A /* InternetMonitorManager.swift */; };
 		72DCB6E32AC6D12100F9B719 /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DCB6E22AC6D12100F9B719 /* CircleButtonView.swift */; };
 		72DF6C2B2AC56064003550FF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DF6C2A2AC56064003550FF /* Constants.swift */; };
@@ -80,11 +76,6 @@
 		72C0AFFD2AAF067B00D50A0A /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 		72C0AFFF2AAF3C1700D50A0A /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 		72C0B0012AAF52C300D50A0A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		72C0B00A2AB05B0D00D50A0A /* CryptoConverterAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoConverterAPIClient.swift; sourceTree = "<group>"; };
-		72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
-		72C0B00F2AB7655700D50A0A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyResponse.swift; sourceTree = "<group>"; };
-		72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrencyNetworkProvider.swift; sourceTree = "<group>"; };
 		72C0B0172AB83B3200D50A0A /* InternetMonitorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetMonitorManager.swift; sourceTree = "<group>"; };
 		72DCB6E22AC6D12100F9B719 /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		72DF6C2A2AC56064003550FF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -99,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724B8D222AD71A910034D5EA /* CryptocurrencyNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +229,6 @@
 				72B9ACE12AB8C1400010D803 /* Operations */,
 				72B9ACDB2AB8AE780010D803 /* Extensions */,
 				72C0B00C2AB764FA00D50A0A /* Internet */,
-				72C0B0092AB0592800D50A0A /* API */,
 				72967CE22AC49911003B090D /* Resources */,
 				72C0AFD82AAA3EA000D50A0A /* Calculator.entitlements */,
 				72C0AFD92AAA3EA000D50A0A /* Preview Content */,
@@ -260,18 +251,6 @@
 				72DCB6E12AC5DD1C00F9B719 /* Mocks */,
 			);
 			path = CalculatorTests;
-			sourceTree = "<group>";
-		};
-		72C0B0092AB0592800D50A0A /* API */ = {
-			isa = PBXGroup;
-			children = (
-				72C0B00D2AB7651200D50A0A /* NetworkProvider.swift */,
-				72C0B00A2AB05B0D00D50A0A /* CryptoConverterAPIClient.swift */,
-				72C0B0152AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift */,
-				72C0B0112AB765B400D50A0A /* CryptocurrencyResponse.swift */,
-				72C0B00F2AB7655700D50A0A /* APIError.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		72C0B00C2AB764FA00D50A0A /* Internet */ = {
@@ -308,6 +287,9 @@
 			dependencies = (
 			);
 			name = Calculator;
+			packageProductDependencies = (
+				724B8D212AD71A910034D5EA /* CryptocurrencyNetworking */,
+			);
 			productName = Calculator;
 			productReference = 72C0AFCF2AAA3EA000D50A0A /* Calculator.app */;
 			productType = "com.apple.product-type.application";
@@ -358,6 +340,9 @@
 				Base,
 			);
 			mainGroup = 72C0AFC62AAA3EA000D50A0A;
+			packageReferences = (
+				724B8D202AD71A910034D5EA /* XCRemoteSwiftPackageReference "CryptocurrencyNetworking" */,
+			);
 			productRefGroup = 72C0AFD02AAA3EA000D50A0A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -399,26 +384,21 @@
 				721D299A2AC321A0002F39F9 /* View+Extensions.swift in Sources */,
 				721D29902ABCBE1F002F39F9 /* Colors.swift in Sources */,
 				721D29962AC1CC90002F39F9 /* ColorModeToggleStyle.swift in Sources */,
-				72C0B00B2AB05B0D00D50A0A /* CryptoConverterAPIClient.swift in Sources */,
 				721D29922AC1B8BC002F39F9 /* AlertBottomSheetView.swift in Sources */,
 				72B9ACE32AB8C15D0010D803 /* CalculatorOfflineOperations.swift in Sources */,
 				72C0AFD52AAA3EA000D50A0A /* CalculatorView.swift in Sources */,
 				72C0AFFE2AAF067B00D50A0A /* CalculatorViewModel.swift in Sources */,
 				721B1BF02AC9A7C100F42F5C /* DeviceOrientationViewModifier.swift in Sources */,
-				72C0B00E2AB7651200D50A0A /* NetworkProvider.swift in Sources */,
 				722F510A2ABB4AAC0068FC47 /* AppBuilder.swift in Sources */,
 				72C0B0002AAF3C1700D50A0A /* CalculatorButton.swift in Sources */,
 				722F51112ABCA2000068FC47 /* SettingsManager.swift in Sources */,
 				721D29942AC1BAE0002F39F9 /* RoundedCorner.swift in Sources */,
 				72B9ACE52AB9C9A50010D803 /* Double+Extensions.swift in Sources */,
-				72C0B0162AB8335100D50A0A /* CryptocurrencyNetworkProvider.swift in Sources */,
-				72C0B0122AB765B400D50A0A /* CryptocurrencyResponse.swift in Sources */,
 				72DCB6E32AC6D12100F9B719 /* CircleButtonView.swift in Sources */,
 				72C0AFD32AAA3EA000D50A0A /* CalculatorApp.swift in Sources */,
 				72C0B0182AB83B3200D50A0A /* InternetMonitorManager.swift in Sources */,
 				72B9ACDD2AB8AE950010D803 /* String+Extensions.swift in Sources */,
 				721D299C2AC322AB002F39F9 /* Image+Extensions.swift in Sources */,
-				72C0B0102AB7655700D50A0A /* APIError.swift in Sources */,
 				72DF6C2B2AC56064003550FF /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,7 +565,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -623,7 +604,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -718,6 +700,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		724B8D202AD71A910034D5EA /* XCRemoteSwiftPackageReference "CryptocurrencyNetworking" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/IngaSeagull/CryptocurrencyNetworking.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		724B8D212AD71A910034D5EA /* CryptocurrencyNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 724B8D202AD71A910034D5EA /* XCRemoteSwiftPackageReference "CryptocurrencyNetworking" */;
+			productName = CryptocurrencyNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 72C0AFC72AAA3EA000D50A0A /* Project object */;
 }
