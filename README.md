@@ -12,7 +12,7 @@ This assignment is made to show my understanding on iOS development, maintenance
 - Additional operation Bitcoin (Given a bitcoin value, obtain the current dollar value), which requires online connectivity and a call to the [Cryptocompare API](https://min-api.cryptocompare.com)
 - Settings, where users can enable or disable operations visibility in UI and also change the color palette of the app. 
 - The interface works on iPhones and iPads. Both landscape and portrait orientation are supported.
-- Error handling: All errors display with a simple message to the user and print to the console for debugging purposes.
+- Error handling: All errors are displayed with a simple message to the user and printed to the console for debugging.
 - Internet connectivity: NWPathMonitor (Does not work correctly on the simulator. Test only on the real device)
 - User settings are saved via UserDefaults.
 - Min SDK version of iOS15
